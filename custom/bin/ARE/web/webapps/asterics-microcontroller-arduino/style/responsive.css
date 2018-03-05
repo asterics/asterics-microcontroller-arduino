@@ -1,0 +1,27 @@
+@media screen and (max-width: 900px) {
+    ul.sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    ul.sidenav li a {
+        float: left;
+        padding: 15px;
+    }
+
+    div.content div.inner {
+        margin-left: 0%;
+        /* margin-left: 0; */
+    }
+}
+
+@media screen and (max-width: 400px) {
+    ul.sidenav li a {
+        text-align: center;
+        float: none;
+    }
+
+    .model-content {
+        width: 100%;
+    }
+}
