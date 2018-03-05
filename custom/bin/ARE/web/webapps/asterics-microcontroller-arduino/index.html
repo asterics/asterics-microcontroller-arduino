@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>     
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../startpage/styles/main.css">
+
+        <!-- provided from AsTeRICS 3.0 -->
+        <script type="text/javascript" src="../startpage/lib/jquery-3.2.1.min.js"></script>
+        <script src="../startpage/clientExample/javascript/JSmap.js"></script>
+        <script src="../startpage/clientExample/javascript/areCommunicator.js"></script>
+        <!-- provided by this repository, should be part of the framework later -->
+        <script src="lib/demoLib.js"></script>
+
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        
+        <title>AsTeRICS Arduino Microcontroller</title>
+
+        
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/responsive.css">
+        <link rel="stylesheet" href="style/model_image.css">
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        
+
+    </head>
+
+    <body>
+        
+        <ul class="sidenav">
+            <li><a class="active" href="#objective">Objective</a></li>
+            <li><a href="#description">Description</a></li>
+            <li class="dropdown">
+                <a href="#demos" class="dropbtn">Demos</a>
+                <div class="dropdown-content">
+                    <a href="#demo1">Demo 1: Digital Output</a>
+                    <a href="#demo2">Demo 2: PWM</a>
+                    <a href="#demo3">Demo 3: ADC</a>
+                    <a href="#demo4">Demo 4: Servo PWM</a>
+                </div>
+            </li>
+            <li><a href="#major_plugins">Major Plugins</a></li>
+        </ul>
+
+    
+        <div class="content" id="content-wrapper">
+            <div class="inner clearfix">
+                <section id="main-content">
+
+                    <h1>AsTeRICS Arduino Microcontoller Demo</h1>
+                    <a name="objective" class="items"><h2>Objective</h2></a>
+                        Digital Input/Output, PWM and ADC with the microcontroller Arduino Uno.
+
+                    <a name="description" class="items"><h2>Description</h2></a>
+                        The Arduino Uno microcontroller platform supports digital input and output and analog input.
+                        This tutorial shows those functions in four demonstrations:
+
+                        <ul>
+                            <li>Digital Output</li>
+                            <li>PWM</li>
+                            <li>ADC</li>
+                            <li>Servo PWM</li>
+                        </ul>
+                        
+
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>USB Port</li>
+                        <!-- FIXME: Add AsTeRICS Amazon Links -->
+                        <li><a target="_blank" href="https://www.amazon.de/UGREEN-Druckerkabel-Anschlusskabel-Scannerkabel-Vergoldete/dp/B00P0FO0Y2/ref=sr_1_2?s=industrial&ie=UTF8&qid=1520162926&sr=1-2&keywords=USB-Kabel+A+auf+B"> USB cabel (USB 2.0 - A/B)</a></li>
+                        <!-- FIXME: Add AsTeRICS Amazon Links -->
+                        <li><a target="_blank" href="https://www.amazon.de/Arduino-Platine-Rev-Elektronik-Lernpaket/dp/364565139X/ref=sr_1_1?s=books&ie=UTF8&qid=1520162725&sr=1-1&keywords=Arduino+Uno+Rev.+3">Arduino Uno SMD R3</a></li>
+                        <li><a href="https://github.com/asterics/AsTeRICS/releases/tag/v3.0" target="_blank">AsTeRICS 3.0</a> installed and ARE running</li>
+                        <li>OS: Windows, Linux (incl. RPi), Mac OS X</li>
+                    </ul>
+
+                        <h3>Additionally required for demos:</h3>
+                        <ul>
+                            <li><b>Digital Output</b>: LEDs, Resistors</li>
+                            <li><b>PWM</b>: LEDs, Resitors</li>
+                            <li><b>ADC</b>: Capacitor, Resistor</li>
+                            <li><b>Servo PWM</b>: Servo motor</li>
+
+                        </ul>
+
+                        <hr>
+
+                        <h3>Setup CIM w. Arduino</h3>
+                            Before Arduino can be used with WebACS, the <br>
+                        <ul>
+                            <li><h4>Windows 7, 8, 10</h4></li>
+
+                            Flash Arduino Uno
+
+                            <pre class=bash> C:\git\asterics\AsTeRICS\CIMs\Ardunio\build> flash </pre>
+                            
+                            <li><h4>Linux (Debian, Ubuntu, ...)</h4></li>
+
+                            Install <font face="monospace">avrdude</font>
+                            <pre class=bash> $ sudo apt-get install avrdude</pre>
+
+                            Flash Arduino Uno
+                            <pre class=bash> $ avrdude -pm328p         \ <br>           -P /dev/ttyACM1 \ <br>           -c stk500v1     \ <br>           -b 115200       \ <br>           -I flash:w:~/git/asterics/AsTeRICS/CIMs/Ardunio/build/Arduino.hex \ <br>           -F</pre>
+
+                            <li><h4>Mac OS X</h4></li>
+                            Install <font face="monospace">avrdude</font>
+                            <pre class=bash> $ brew install avrdude --with-usb</pre>
+
+                            Flash Arduino Uno
+                            <pre class=bash> $ avrdude -pm328p         \ <br>           -P /dev/ttyACM1 \ <br>           -c stk500v1     \ <br>           -b 115200       \ <br>           -I flash:w:~/git/asterics/AsTeRICS/CIMs/Ardunio/build/Arduino.hex \ <br>           -F</pre>
+
+                        
+                        </ul>
+
+                    <hr>
+
+                    <a class="items" target="_blank" name="demos"><h2>Demos</h2></a>
+
+                        <section id="demo1-digtialoutput">
+                            <a name="demo1"><h3>Demo 1: Digital Output</h3></a>
+
+                            <ol>
+                            <li><h3>Circuit</h3></li>
+                            <table>
+                                <tr>
+                                    <td width="60%">
+                                        <img id="demo1svg" class="svgmodal" alt="Demo 1: Digital Output" width="100%" src="img/demo1.svg">
+                                    </td>
+                                    <td width="5%"></td>
+                                    <td>
+                                        <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 1: Digital Output" width="100%" src="img/demo1-circuit.svg">
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <li><h3>Edit Model</h3></li>
+                            <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-camerainput-cameramouse/models/XFaceTrackerMouse(WLM).acs">Open in WebACS</a>
+                            </ol>
+
+                        </section>
+
+                        <section id="demo2-pwm">
+                            <a name="demo2"><h3>Demo 2: PWM</h3></a>
+
+                            <ol>
+                                <li><h3>Circuit</h3></li>
+                                <table>
+                                    <td width="60%">
+                                            <img id="demo1svg" class="svgmodal" alt="Demo 2: PWM" width="100%" src="img/demo2.svg">
+                                        </td>
+                                        <td width="5%"></td>
+                                        <td>
+                                            <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: PWM" width="100%" src="img/demo2-circuit.svg">
+                                    </td>
+                                </table>
+
+
+                            </ol>
+
+                        </section>
+
+                        <section id="demo3-adc">
+                            <a name="demo3"><h3>Demo 3: ADC</h3></a>
+
+                        </section>
+
+                        <section id="demo4-servopwm">
+                            <a name="demo4"><h3>Demo 4: Servo PWM</h3></a>
+
+                        </section>
+
+                    <hr>
+
+                    <a name="major_plugins" class="items"><h2>Major Plugins</h2></a>
+                    <ul>
+                        <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&processors/Arduino.htm">Arduino</a></li>
+                        <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&sensors/ButtonGrid.htm">ButtonGrid</a></li>
+                        <!-- FIXME: Link down -->
+                        <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&sensors/http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&sensors/Cellboard.htm">Cellboard</a></li>
+
+                    </ul>
+                    
+                    <a name="edit_model" class="items"><h2>Edit Model</h2></a>
+                    <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-camerainput-cameramouse/models/XFaceTrackerMouse(WLM).acs">Open in WebACS</a>
+
+                    <h2>Source Repository</h2>
+                    You can fork and modify this <a target="_blank" href="https://github.com/asterics/asterics-microcontroller-arduino">repository</a>.
+
+                    <h2>Related Videos</h2>
+
+                    <h2>Related Tutorials</h2>
+
+
+                </section>
+            </div>            
+        </div>
+
+
+        <!-- Modal Image -->
+        <div id="modalwrapper" class="modal">
+                <span class="close" onclick="document.getElementById('modalwrapper').style.display='none'">&times;</span>
+                <img class="modal-content" id="modalimage">
+                <div id="caption"></div>
+        </div>
+        <script src="lib/modal.js"></script>
+        <link rel="stylesheet" href="style/animation.css">
+    </body>
+</html>
