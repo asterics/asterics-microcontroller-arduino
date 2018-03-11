@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- <meta http-equiv="refresh" content="1"> -->
+        <!-- <meta http-equiv="refresh" content="2"> -->
 		<!-- Initial setup
 		================================================== -->
 		<!-- Browser compatiblity, sf. https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do -->
@@ -35,8 +35,8 @@
         <!-- provided from AsTeRICS 3.0 -->
         <!-- FIXME: Is jquery file necessary anymore? -->
         <!-- <script type="text/javascript" src="../startpage/lib/jquery-3.2.1.min.js"></script> -->
-        <script src="../startpage/clientExample/javascript/JSmap.js"></script>
-        <script src="../startpage/clientExample/javascript/areCommunicator.js"></script>
+        <!-- <script src="../startpage/clientExample/javascript/JSmap.js"></script> -->
+        <!-- <script src="../startpage/clientExample/javascript/areCommunicator.js"></script> -->
 
         <!-- provided by this repository, should be part of the framework later -->
         <script src="../startpage/lib/demoLib.js"></script>
@@ -44,6 +44,8 @@
         <!-- AsTeRICS Arduino Demos
         ================================================== -->
         <script src="lib/asterics-microcontroller-arduino.js"></script>
+        <script src="lib/amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="lib/amcharts/serial.js" type="text/javascript"></script>
 		
 		<title>AsTeRICS Arduino Microcontroller</title>
 	</head>
@@ -80,12 +82,13 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownadditionalresources" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Material</a>
+                        <a class="nav-link active dropdown-toggle" href="#" id="dropdownadditionalresources" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Material</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownadditionalresources">
                             <a class="dropdown-item" href="#majorplugins">Major Plugins</a>
-                            <a class="dropdown-item" href="#editmodel">Edit Model</a>
-                            <a class="dropdown-item" href="#relatedvideos">Related Videos</a>
-                            <a class="dropdown-item" href="#relatedtutorials">Related Tutorials</a>
+                            <!-- <a class="dropdown-item" href="#editmodel">Edit Model</a> -->
+                            <a class="dropdown-item" href="#sourcerepository">Source Repository</a>
+                            <!-- <a class="dropdown-item" href="#relatedvideos">Related Videos</a> -->
+                            <!-- <a class="dropdown-item" href="#relatedtutorials">Related Tutorials</a> -->
                         </div>
                     </li>
                 </ul>
@@ -103,7 +106,7 @@
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <div class="container">
-                    <h1 class="display-3"> Arduino Demo</h1>
+                    <h1 class="display-3">Arduino Microcontroller Demo</h1>
                     <p>This is a tutorial including four different demos, showing you how to use the popular arduino microcontroller
                         platform together with AsTerICS.
                     </p><a class="btn btn-primary btn-lg" href="https://github.com/asterics/AsTeRICS" role="button">Learn more »</a>
@@ -155,8 +158,8 @@
     
                         <h3>Additionally required for demos:</h3>
                         <ul>
-                            <li><b>Demo 1: Digital Output</b>: LEDs, Resistors</li>
-                            <li><b>Demo 2: PWM</b>: LEDs, Resitors</li>
+                            <li><b>Demo 1: Digital Output</b>: LEDs, Resistor</li>
+                            <li><b>Demo 2: PWM</b>: LEDs, Resistor</li>
                             <li><b>Demo 3: ADC</b>: Capacitor, Resistor</li>
                             <li><b>Demo 4: Servo PWM</b>: <a target="_blank" href="https://www.amazon.de/Carson-500502015-CS-3-Servo-3KG/dp/B0037Y93CW/ref=sr_1_7?ie=UTF8&qid=1520713097&sr=8-7&keywords=servomotor">Servo motor</a></li>
 
@@ -197,7 +200,7 @@
                     
                     <div class="col" id="demo1">
                         <h3>Demo 1: Digital Output</h3>
-                        <p>The first demo introduces the digital output capabilities that are included with the <em>Arduino Uno</em> platform.
+                        <p>The first demo introduces you to the digital output capabilities that are included with the <em>Arduino Uno</em> platform.
                            Setup the circuit and press the buttons in the application section.
                         </p>
 
@@ -206,7 +209,12 @@
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo1svg" class="svgmodal" alt="Demo 1: Digital Output" width="100%" src="img/demo1.svg">
+                                    <!-- <div class="svgmodal">
+                                    <embed id="demo1svg" alt="Demo 1: Digital Output" src="img/demo1.svg" width="100%">
+                                    </div> -->
+                                    <svg  width="100%" height="100%">
+                                        <image xlink:href="img/demo1.svg" id="demo1svg" src="img/demo1.svg" width="100%" height="100%" class="svgmodal" alt="Demo 1: Digital Output"/>
+                                    </svg>
                                 </td>
                                 <td width="5%"></td>
                                 <td>
@@ -214,20 +222,24 @@
                                 </td>
                             </tr>
                         </table>
-                        <p>First, connect a 220&nbsp;&#8486; resistor (R<sub>1</sub>) to the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
-                           Then connect the anode of the LED (D<sub>1</sub> - positive) with that resistor.
-                           Finally, connect the cathode of the LED (negative) to one of the GND pins on the left side.
+                        <p>First, connect a 220&nbsp;&Omega; resistor R<sub>1</sub> to the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                           Then connect the anode of the LED D<sub>1</sub> (positive) with that resistor.
+                           Finally, connect the cathode of the LED (negative) to one of the <code>GND</code> pins on the left side of the connectors of the <em>Arduino Uno</em> platform.
                         </p>
 
                         <h4>Demo Application</h4>
                         <p>
-                            <table>
+                            Press the buttons <code>LED On</code> and <code>LED off</code> after setting up the circuitry shown above to turn the LED on and off, respectively.
+                            The AsTeRICS model (.acs) is started and commands are passed through to it, in order to toggle the LED.
+                            <table style="border: 1px solid black" width="100%">
                                 <tr>
-                                    <td width="60%" valign="center">
-                                        <button onclick="demo1ledon()" id="buttonOn"  >LED On</button><br>
-                                        <button id="bottonOff" >LED Off</button>
+                                    <td width="25%"/>
+                                    <td width="25%" valign="center">
+                                        <button onclick="demo1ledon()" id="demo1buttonon">LED On</button><br>
+                                        <button id="demo1bottonoff">LED Off</button>
                                     </td>
-                                    <td width="40%" valign="center">
+                                    <td width="50%"/>
+                                    <!-- <td width="40%" valign="center">
                                         <svg
                                             xmlns:dc="http://purl.org/dc/elements/1.1/"
                                             xmlns:cc="http://creativecommons.org/ns#"
@@ -246,41 +258,77 @@
                                                 cy="300"
                                                 r="100" />
                                         </svg>
-                                        </td>
+                                        </td> -->
                                 </tr>
                             </table>
                         </p>
 
-                        <h4>Edit Model</h4>
+                        <h4>Edit Model ArduinoDigitalOutput</h4>
                         <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoDigitalOutput.acs">Open in WebACS</a>
                         <p>
-                            You can edit the used model directly in WebACS and adapt to fit you own needs.
+                            You can edit the used model directly in WebACS and adapt to fit your own needs.
                         </p>
                     </div>
+                    <hr>
                     
                     <div class="col" id="demo2">
                         <h3>Demo 2: PWM</h3>
-                        <p>The second demo shows how to use the PWM capabilities of the digital outputs of <em>Arduino Uno</em> to dim a light, in this case a LED.</p>
+                        <p>The second demo shows you how to use the PWM capabilities of the digital outputs of <em>Arduino Uno</em> to dim a LED light.
+                           Setup the circuit, and in the application section below, choose the desired <em>Duty Cycle</em> and press the buttons.</p>
 
                         <h4>Circuit</h4>
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo1svg" class="svgmodal" alt="Demo 2: PWM" width="100%" src="img/demo2.svg">
+                                    <img id="demo2svg" class="svgmodal" alt="Demo 2: PWM" width="100%" src="img/demo2.svg">
                                 </td>
                                 <td width="5%"></td>
                                 <td>
-                                    <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: PWM" width="100%" src="img/demo2-circuit.svg">
+                                    <img id="demo2circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: PWM" width="100%" src="img/demo2-circuit.svg">
                                 </td>
                             </tr>
                         </table>
-                        <p>First, connect a 220&nbsp;&#8486; resistor (R<sub>1</sub>) to the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
-                            Then connect the anode of the LED (D<sub>1</sub> - positive) with that resistor.
-                            Finally, connect the cathode of the LED (negative) to one of the GND pins on the left side.
+                        <p>First, connect a 220&nbsp;&Omega; resistor R<sub>1</sub> to the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                            Then connect the anode of the LED D<sub>1</sub> (positive) with that resistor.
+                            Finally, connect the cathode of the LED (negative) to one of the <code>GND</code> pins on the left side.
+                        </p>
+
+                        <h4>Demo Application</h4>
+                        <p>
+                            Press the buttons <code>LED On</code> and <code>LED off</code> after setting up the circuitry shown above to turn the LED on and off, respectively.
+                            You may change the value of the slider <em>Duty Cycle</em> as you wish.
+                            The AsTeRICS model (.acs) is started and commands are passed through to it, in order to toggle and dim the LED.
+                            <table style="border: 1px solid black;" width="100%">
+                                <tr>
+                                    <td width="25%"/>
+                                    <td width="25%">
+                                        <button id="demo2buttonon">LED On</button><br>
+                                        <button id="demo2buttonoff">LED Off</button>
+                                    </td>
+                                    <td width="50%">
+                                        <label id="label_dutycycle">Duty Cycle</label><br>
+                                        <input title="PWM Duty Cycle" type="range" id="input_dutycycle" value="50" oninput="refreshPWMSliderValue()">
+                                        <script>
+                                            function refreshPWMSliderValue() {
+                                                document.getElementById('label_dutycycle').innerHTML = "Duty Cycle: " + document.getElementById('input_dutycycle').value + " %";
+                                            }
+                                            refreshPWMSliderValue();
+                                        </script>
+                                    </td>
+                                    <td width="0%"/>
+                                </tr>
+                            </table>
+                        </p>
+
+                        <h4>Edit Model ArduinoPWM</h4>
+                        <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoPWM.acs">Open in WebACS</a>
+                        <p>
+                            You can edit the used model directly in WebACS and adapt to fit your own needs.
                         </p>
 
                     </div>
+                    <hr>
 
                     <div class="col" id="demo3">
                         <h3>Demo 3: ADC</h3>
@@ -291,82 +339,158 @@
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo1svg" class="svgmodal" alt="Demo 3: ADC" width="100%" src="img/demo3.svg">
+                                    <img id="demo3svg" class="svgmodal" alt="Demo 3: ADC" width="100%" src="img/demo3.svg">
                                 </td>
                                 <td width="5%"></td> 
                                 <td>
-                                    <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 3: ADC" width="100%" src="img/demo3-circuit.svg">
+                                    <img id="demo3circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 3: ADC" width="100%" src="img/demo3-circuit.svg">
                                 </td>
                             </tr>
                         </table>
-                        <p>First, connect a 100&nbsp;&#8486; resistor (R<sub>2</sub>) to the digital output pin with the number <code>2</code>, on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                        <p>First, connect a 100&nbsp;k&#8486; resistor R<sub>2</sub> to the digital output pin with the number <code>2</code>, on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                           Then connect the resistor with a 10&nbsp;&micro;F (electrolytic) capacitor C<sub>1</sub> with that resistor.
+                           Additonally, connect the positive side of C<sub>1</sub> with the analog pin with the number <code>A0</code>, on the left side of the connectors of the <em>Aruindo Uno</em>.
+                           Finally, connect the negative side of the (electrolytic) capacitor to one of the <code>GND</code> pins on the left side.
+                        </p>
 
+                        <h4>Demo Application</h4>
+                        <p>
+                            <table style="border: 1px solid black" width="100%">
+                                <tr>
+                                    <td width="25%"/>
+                                    <td width="25%">
+                                        <button id="demo3buttonon">LED On</button><br>
+                                        <button id="demo3buttonoff">LED Off</button>
+                                    </td>
+                                    <td width="50%">
+                                        <div id="lineChartDiv" style="background-image: url('img/board.svg'); background-size: 100% 100%; width:100%; height:300px;"></div>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+
+                        <h4>Edit Model ArduinoADC</h4>
+                        <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoADC.acs">Open in WebACS</a>
+                        <p>
+                            You can edit the used model directly in WebACS and adapt to fit your own needs.
                         </p>
                     </div>
+                    <hr>
 
                     <div class="col" id="demo4">
-                        <h3>Demo 4: Servo PMM</h3>
+                        <h3>Demo 4: Servo PWM</h3>
 
                         <h4>Circuit</h4>
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo1svg" class="svgmodal" alt="Demo 4: Servo PWM" width="100%" src="img/demo4.svg">
+                                    <img id="demo4svg" class="svgmodal" alt="Demo 4: Servo PWM" width="100%" src="img/demo4.svg" type="image/svg+xml">
                                 </td>
                                 <td width="5%"></td>  
                                 <td> 
-                                    <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 4: Servo PWM" width="100%" src="img/demo4-circuit.svg">
+                                    <img id="demo4circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 4: Servo PWM" width="100%" src="img/demo4-circuit.svg">
                                 </td>
                             </tr>
                         </table>
-                        <p>First, connect a 100&nbsp;&#8486; resistor (R<sub>2</sub>) to the digital output pin with the number <code>2</code>, on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                        <p>Servo motors, used for the construction of models, usually have connectors with three pins (power - control - ground).
+                           Connect the power pin (red) of the servo motor with the <code>5V</code> pin on the left side.
+                           Then connect the control pin (yellow, orange, white) of the servo motor with the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                           Finally, connect the ground pin (brown, black) of the servo motor with the <code>GND</code> pin on the left side.
+                        </p> 
+                    
+                        <h4>Demo Application</h4>
+                        <p>
+                            <table style="border: 1px solid black" width="100%">
+                                <tr>
+                                    <td width="25%"/>
+                                    <td width="25%">
+                                        <button id="demo4buttonon">Servo On</button><br>
+                                        <button id="demo4buttonoff">Servo Off</button>
+                                    </td>
+                                    <td width="50%">
+                                        <label id="label_degree">Rotation</label><br>
+                                        <input title="Degree" type="range" id="input_degree" value="50" max="90" oninput="refreshServoSliderValue()">
+                                        <script>
+                                            var rotor = null;
 
+                                            function loadServoSvg() {
+                                                var svgobj = document.getElementById("demo4svg");
+
+                                                if (svgobj.contentDocument) {
+                                                    svgdoc = svgobj.contentDocument;
+                                                } else {
+                                                    svgdoc = svgdoc.getSVGDocument();
+                                                }
+
+                                                rotor = svgdoc.getElementById("rotoranimation");
+                                            }
+
+                                            window.addEventListener("load", loadServoSvg, false);
+
+                                            
+                                            function refreshServoSliderValue() {
+                                                document.getElementById('label_degree').innerHTML = "Angle: " + document.getElementById('input_degree').value + "°";
+                                                if (rotor != null) {
+                                                    rotor.values = document.getElementById('input_degree').value + " 200 362.36221"
+                                                }
+                                            }
+                                            refreshServoSliderValue();
+                                        </script>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                    
+
+                        <h4>Edit Model ArduinoServoPWM</h4>
+                        <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoServoPWM.acs">Open in WebACS</a>
+                        <p>
+                            You can edit the used model directly in WebACS and adapt to fit your own needs.
                         </p>
                     </div>
-
-                    
 
                 </div><hr>
 
                 <!-- Section 5 -->
                 <div class="col" id="additional_material">
                     <h2>Additional Material</h2>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
+                    <p>This section contains additional support material related to this demo tutorial.</p>
 
                     <div class="col" id="majorplugins">
                         <h3>Major Plugins</h3>
                         <ul>
-                            <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&sensors/XFacetrackerLK.htm">XFacetrackerLK</a></li>
-                            <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&actuators/Mouse.htm">Mouse</a></li>
+                            <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&processors/Arduino.htm">Arduino</a></li>
+                            <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&sensors/ButtonGrid.htm">ButtonGrid</a></li>
+                            <li><a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/help/index.html?plugins&sensors/CellBoard.htm">Cellboard</a></li>
                         </ul>
                     </div>
 
-                    <div class="col" id="editmodel">
+                    <!-- <div class="col" id="editmodel">
                         <h3>Edit Model</h3>
                         <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-camerainput-cameramouse/models/XFaceTrackerMouse(WLM).acs">Open in WebACS</a>
-                    </div>
+                    </div> -->
 
                     <div class="col" id="sourcerepository">
                         <h3>Source Repository</h3>
-                        <p>Fork and modify this <a target="_blank" href="https://github.com/asterics/asterics-camerainput-cameramouse">repository</a>.</p>
+                        <p>Fork and modify this <a target="_blank" href="https://github.com/asterics/asterics-microcontroller-arduino">repository</a>.</p>
                     </div>
 
-                    <div class="col" id="relatedvideos">
+                    <!-- <div class="col" id="relatedvideos">
                         <h3>Related Videos</h3>
                         <ul>
                             <li><a target="_blank" href="https://youtu.be/P9qJAWegkFM?t=1955">Camera Mouse Demo Screencast</a></li>
                             <li><a target="_blank" href="https://youtu.be/P9qJAWegkFM?t=1955">Camera Mouse Demo Screencast</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
-                    <div class="col" id="relatedtutorials">
+                    <!-- <div class="col" id="relatedtutorials">
                         <h3>Related Tutorials</h3>
                         <ul>	
                             <li><a target="_blank" href="https://github.com/asterics/AsTeRICS/blob/master/Documentation/AsTeRICS_CameraMouseCreation_StepbyStep_Tutorial.pdf">Camera Mouse Creation StepbyStep Tutorial</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </ul>
 
 

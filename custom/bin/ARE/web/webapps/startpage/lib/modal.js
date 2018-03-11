@@ -9,9 +9,10 @@ var captionText = document.getElementById("caption");
 
 $('.svgmodal').click(function() {
     modal.style.display = "block";
-    var newSrc = this.src;
+    var newSrc = this.attributes.src.value;
     modalImg.attr('src', newSrc);
-    captionText.innerHTML = this.alt;
+    var captionImg = this.attributes.alt.value;
+    captionText.innerHTML = captionImg;
     init = true;
 });
 
