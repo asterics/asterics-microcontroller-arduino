@@ -1,0 +1,15 @@
+/* table {
+    border-collapse: collapse;
+}
+ 
+th, td {
+    border-bottom: 0px solid transparent;
+    border-top: 0px solid transparent;
+    background-color: white;
+    background-clip: padding-box;
+} */
+
+svg {
+    display: block;
+    max-height: 100%;
+}

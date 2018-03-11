@@ -15,7 +15,9 @@
 
 		<!-- Stylesheets
 		================================================== -->
-		<!-- Adapt/add styles if necessary -->
+        <!-- Adapt/add styles if necessary -->
+        <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+
 		<link rel="stylesheet" type="text/css" href="../startpage/style/main.css">
 
 		<!-- bootstrap 3 (#responsive) supports also IE8-9 -->
@@ -75,10 +77,11 @@
                     <li class="nav-item active dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdowndemos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demos</a>
                         <div class="dropdown-menu" aria-labelledby="dropdowndemos">
-                            <a class="dropdown-item" href="#demo1">Demo 1: Digital Output</a>
-                            <a class="dropdown-item" href="#demo2">Demo 2: PWM</a>
-                            <a class="dropdown-item" href="#demo1">Demo 3: ADC</a>
-                            <a class="dropdown-item" href="#demo1">Demo 4: Servo PWM</a>
+                            <a class="dropdown-item" href="#demo1">Demo 1: Digital Input</a>
+                            <a class="dropdown-item" href="#demo2">Demo 2: Digital Output</a>
+                            <a class="dropdown-item" href="#demo3">Demo 3: PWM</a>
+                            <a class="dropdown-item" href="#demo4">Demo 4: ADC</a>
+                            <a class="dropdown-item" href="#demo5">Demo 5: Servo PWM</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -132,10 +135,11 @@
                         This tutorial shows those functions in four demonstrations:
 
                         <ul>
-                            <li>Demo 1: Digital Output</li>
-                            <li>Demo 2: PWM</li>
-                            <li>Demo 3: ADC</li>
-                            <li>Demo 4: Servo PWM</li>
+                            <li>Demo 1: Digital Input</li>
+                            <li>Demo 2: Digital Output</li>
+                            <li>Demo 3: PWM</li>
+                            <li>Demo 4: ADC</li>
+                            <li>Demo 5: Servo PWM</li>
                         </ul>
                     </p>
 
@@ -158,10 +162,11 @@
     
                         <h3>Additionally required for demos:</h3>
                         <ul>
-                            <li><b>Demo 1: Digital Output</b>: LEDs, Resistor</li>
-                            <li><b>Demo 2: PWM</b>: LEDs, Resistor</li>
-                            <li><b>Demo 3: ADC</b>: Capacitor, Resistor</li>
-                            <li><b>Demo 4: Servo PWM</b>: <a target="_blank" href="https://www.amazon.de/Carson-500502015-CS-3-Servo-3KG/dp/B0037Y93CW/ref=sr_1_7?ie=UTF8&qid=1520713097&sr=8-7&keywords=servomotor">Servo motor</a></li>
+                            <li><b>Demo 1: Digital Input</b>: Switch, Resistor</li>
+                            <li><b>Demo 2: Digital Output</b>: LEDs, Resistor</li>
+                            <li><b>Demo 3: PWM</b>: LEDs, Resistor</li>
+                            <li><b>Demo 4: ADC</b>: Capacitor, Resistor</li>
+                            <li><b>Demo 5: Servo PWM</b>: <a target="_blank" href="https://www.amazon.de/Carson-500502015-CS-3-Servo-3KG/dp/B0037Y93CW/ref=sr_1_7?ie=UTF8&qid=1520713097&sr=8-7&keywords=servomotor">Servo motor</a></li>
 
                         </ul>
 
@@ -197,46 +202,94 @@
                 <div class="col" id="demos">
                     <h2>Demos</h2>
                     <p></p>
-                    
+
                     <div class="col" id="demo1">
-                        <h3>Demo 1: Digital Output</h3>
-                        <p>The first demo introduces you to the digital output capabilities that are included with the <em>Arduino Uno</em> platform.
+                        <h3>Demo 1: Digital Input</h3>
+                        <p>The first demo introduces you to the digital input capabilities of the <em>Arduino Uno</em> platform.
+                            Setup the circuit and press <strong>Start</strong> to capture switch operation at the connected button.
+                        </p>
+                        
+                        <h4>Circuit</h4>
+                        <p>For this demo you have to setup and electric circuitry as depcited below. </p>
+                        <table border-spacing="0 1em">
+                            <tr>
+                                <td width="60%">
+                                    <img id="demo1svg" class="svgmodal" alt="Demo 1: Digital Input" width="100%" src="img/demo1.svg">
+                                </td>
+                                <td width="5%"></td>
+                                <td>
+                                    <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 1: Digital Input" width="100%" src="img/demo1-circuit.svg">
+                                </td>
+                            </tr>
+                        </table>
+                        <p>First, connect a 220&nbsp;&Omega; resistor R<sub>1</sub> to the <code>5V</code> pin on the left side.
+                           Then connect the resistor to the switch S<sub>1</sub> and to the digital input pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em>, as shown in the left picture above.
+                           Finally, connect the other pin of the switch to one of the <code>GND</code> pins of the left side of the connectors of the <em>Arduino Uno</em>.
+                        </p>
+
+                        <h4>Demo Application</h4>
+                        <p>
+                            Press the <code>Start</code> button to capture push button (S<sub>1</sub>) activity.
+                            <table style="border: 1px solid black" width="100%">
+                                <tr>
+                                    <td width="25%"/>
+                                    <td width="25%" valign="center">
+                                        <button onclick="demo1ledon()" id="demo1buttonstart">Start</button>
+                                    </td>
+                                    <td width="50%"/>
+                                </tr>
+                            </table>
+                        </p>
+
+                        <h4>Edit Model ArduinoDigitalInput</h4>
+                        <a target="_blank" href="http://asterics.github.io/AsTeRICS/webapps/WebACS/?areBaseURI=http://localhost:8081&openFile=http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoDigitalInput.acs">Open in WebACS</a>
+                        <p>
+                            You can edit the used model directly in WebACS and adapt to fit your own needs.
+                        </p>
+                    </div>
+                    <hr>
+                    
+                    <div class="col" id="demo2">
+                        <h3>Demo 2: Digital Output</h3>
+                        <p>The second demo introduces you to the digital output capabilities that are included with the <em>Arduino Uno</em> platform.
                            Setup the circuit and press the buttons in the application section.
                         </p>
 
                         <h4>Circuit</h4>
                         <p>For this demo you have to setup an electric circuitry as depicted below. </p>
-                        <table> 
+                        <table border-spacing="0 1em"> 
                             <tr>
                                 <td width="60%">
-                                    <!-- <div class="svgmodal">
-                                    <embed id="demo1svg" alt="Demo 1: Digital Output" src="img/demo1.svg" width="100%">
-                                    </div> -->
-                                    <svg  width="100%" height="100%">
-                                        <image xlink:href="img/demo1.svg" id="demo1svg" src="img/demo1.svg" width="100%" height="100%" class="svgmodal" alt="Demo 1: Digital Output"/>
-                                    </svg>
+                                    
+                                    <!-- <embed id="demo2svg" alt="Demo 2: Digital Output" src="img/demo1.svg" width="100%" class="svgmodal" onclick="javascript:alert('You are clicking on the svg EXAMPLE')"> -->
+                                    
+                                    <!-- <svg version="1.1" width="100%" height="100%" viewbox="0 0 50 30">
+                                        <image xlink:href="img/demo2.svg" id="demo2svg" src="img/demo2.svg" width="100%" height="100%" class="svgmodal" alt="Demo 2: Digital Output"/>
+                                    </svg> -->
+
+                                    <img id="demo1svg" class="svgmodal" alt="Demo 2: Digital Output" width="100%" src="img/demo2.svg">
                                 </td>
                                 <td width="5%"></td>
                                 <td>
-                                    <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 1: Digital Output" width="100%" src="img/demo1-circuit.svg">
+                                    <img id="demo2circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" src="img/demo2-circuit.svg">
                                 </td>
                             </tr>
                         </table>
-                        <p>First, connect a 220&nbsp;&Omega; resistor R<sub>1</sub> to the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em> platform, as shown in the left picture above.
+                        <p>First, connect a 220&nbsp;&Omega; resistor R<sub>1</sub> to the digital output pin with the number <code>2</code> on the right side of the connectors of the <em>Arduino Uno</em>, as shown in the left picture above.
                            Then connect the anode of the LED D<sub>1</sub> (positive) with that resistor.
-                           Finally, connect the cathode of the LED (negative) to one of the <code>GND</code> pins on the left side of the connectors of the <em>Arduino Uno</em> platform.
+                           Finally, connect the cathode of the LED (negative) to one of the <code>GND</code> pins on the left side of the connectors of the <em>Arduino Uno</em>.
                         </p>
 
                         <h4>Demo Application</h4>
                         <p>
-                            Press the buttons <code>LED On</code> and <code>LED off</code> after setting up the circuitry shown above to turn the LED on and off, respectively.
+                            Press the buttons <code>LED On</code> and <code>LED Off</code> after setting up the circuitry shown above to turn the LED on and off, respectively.
                             The AsTeRICS model (.acs) is started and commands are passed through to it, in order to toggle the LED.
                             <table style="border: 1px solid black" width="100%">
                                 <tr>
                                     <td width="25%"/>
                                     <td width="25%" valign="center">
-                                        <button onclick="demo1ledon()" id="demo1buttonon">LED On</button><br>
-                                        <button id="demo1bottonoff">LED Off</button>
+                                        <button onclick="demo2ledon()" id="demo2buttonon">LED On</button><br>
+                                        <button id="demo2bottonoff">LED Off</button>
                                     </td>
                                     <td width="50%"/>
                                     <!-- <td width="40%" valign="center">
@@ -271,9 +324,9 @@
                     </div>
                     <hr>
                     
-                    <div class="col" id="demo2">
-                        <h3>Demo 2: PWM</h3>
-                        <p>The second demo shows you how to use the PWM capabilities of the digital outputs of <em>Arduino Uno</em> to dim a LED light.
+                    <div class="col" id="demo3">
+                        <h3>Demo 3: PWM</h3>
+                        <p>The third demo shows you how to use the PWM capabilities of the digital outputs of <em>Arduino Uno</em> to dim a LED light.
                            Setup the circuit, and in the application section below, choose the desired <em>Duty Cycle</em> and press the buttons.</p>
 
                         <h4>Circuit</h4>
@@ -281,11 +334,11 @@
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo2svg" class="svgmodal" alt="Demo 2: PWM" width="100%" src="img/demo2.svg">
+                                    <img id="demo3svg" class="svgmodal" alt="Demo 2: PWM" width="100%" src="img/demo3.svg">
                                 </td>
                                 <td width="5%"></td>
                                 <td>
-                                    <img id="demo2circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: PWM" width="100%" src="img/demo2-circuit.svg">
+                                    <img id="demo3circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: PWM" width="100%" src="img/demo3-circuit.svg">
                                 </td>
                             </tr>
                         </table>
@@ -296,15 +349,15 @@
 
                         <h4>Demo Application</h4>
                         <p>
-                            Press the buttons <code>LED On</code> and <code>LED off</code> after setting up the circuitry shown above to turn the LED on and off, respectively.
+                            Press the buttons <code>LED On</code> and <code>LED Off</code> after setting up the circuitry shown above to turn the LED on and off, respectively.
                             You may change the value of the slider <em>Duty Cycle</em> as you wish.
                             The AsTeRICS model (.acs) is started and commands are passed through to it, in order to toggle and dim the LED.
                             <table style="border: 1px solid black;" width="100%">
                                 <tr>
                                     <td width="25%"/>
                                     <td width="25%">
-                                        <button id="demo2buttonon">LED On</button><br>
-                                        <button id="demo2buttonoff">LED Off</button>
+                                        <button id="demo3buttonon">LED On</button><br>
+                                        <button id="demo3buttonoff">LED Off</button>
                                     </td>
                                     <td width="50%">
                                         <label id="label_dutycycle">Duty Cycle</label><br>
@@ -330,20 +383,20 @@
                     </div>
                     <hr>
 
-                    <div class="col" id="demo3">
-                        <h3>Demo 3: ADC</h3>
-                        <p>The third demo shows how to measure an analog value and use its digital representation in an ACS model.</p>
+                    <div class="col" id="demo4">
+                        <h3>Demo 4: ADC</h3>
+                        <p>The fourth demo shows how to measure an analog value and use its digital representation in an ACS model.</p>
 
                         <h4>Circuit</h4>
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo3svg" class="svgmodal" alt="Demo 3: ADC" width="100%" src="img/demo3.svg">
+                                    <img id="demo4svg" class="svgmodal" alt="Demo 3: ADC" width="100%" src="img/demo4.svg">
                                 </td>
                                 <td width="5%"></td> 
                                 <td>
-                                    <img id="demo3circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 3: ADC" width="100%" src="img/demo3-circuit.svg">
+                                    <img id="demo4circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 3: ADC" width="100%" src="img/demo4-circuit.svg">
                                 </td>
                             </tr>
                         </table>
@@ -359,8 +412,8 @@
                                 <tr>
                                     <td width="25%"/>
                                     <td width="25%">
-                                        <button id="demo3buttonon">LED On</button><br>
-                                        <button id="demo3buttonoff">LED Off</button>
+                                        <button id="demo4buttonon">LED On</button><br>
+                                        <button id="demo4buttonoff">LED Off</button>
                                     </td>
                                     <td width="50%">
                                         <div id="lineChartDiv" style="background-image: url('img/board.svg'); background-size: 100% 100%; width:100%; height:300px;"></div>
@@ -378,19 +431,19 @@
                     </div>
                     <hr>
 
-                    <div class="col" id="demo4">
-                        <h3>Demo 4: Servo PWM</h3>
+                    <div class="col" id="demo5">
+                        <h3>Demo 5: Servo PWM</h3>
 
                         <h4>Circuit</h4>
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
                                 <td width="60%">
-                                    <img id="demo4svg" class="svgmodal" alt="Demo 4: Servo PWM" width="100%" src="img/demo4.svg" type="image/svg+xml">
+                                    <img id="demo5svg" class="svgmodal" alt="Demo 4: Servo PWM" width="100%" src="img/demo5.svg" type="image/svg+xml">
                                 </td>
                                 <td width="5%"></td>  
                                 <td> 
-                                    <img id="demo4circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 4: Servo PWM" width="100%" src="img/demo4-circuit.svg">
+                                    <img id="demo5circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 4: Servo PWM" width="100%" src="img/demo5-circuit.svg">
                                 </td>
                             </tr>
                         </table>
@@ -406,35 +459,35 @@
                                 <tr>
                                     <td width="25%"/>
                                     <td width="25%">
-                                        <button id="demo4buttonon">Servo On</button><br>
-                                        <button id="demo4buttonoff">Servo Off</button>
+                                        <button id="demo5buttonon">Servo On</button><br>
+                                        <button id="demo5buttonoff">Servo Off</button>
                                     </td>
                                     <td width="50%">
                                         <label id="label_degree">Rotation</label><br>
                                         <input title="Degree" type="range" id="input_degree" value="50" max="90" oninput="refreshServoSliderValue()">
                                         <script>
-                                            var rotor = null;
+                                            // var rotor = null;
 
-                                            function loadServoSvg() {
-                                                var svgobj = document.getElementById("demo4svg");
+                                            // function loadServoSvg() {
+                                            //     var svgobj = document.getElementById("demo5svg");
 
-                                                if (svgobj.contentDocument) {
-                                                    svgdoc = svgobj.contentDocument;
-                                                } else {
-                                                    svgdoc = svgdoc.getSVGDocument();
-                                                }
+                                            //     if (svgobj.contentDocument) {
+                                            //         svgdoc = svgobj.contentDocument;
+                                            //     } else {
+                                            //         svgdoc = svgdoc.getSVGDocument();
+                                            //     }
 
-                                                rotor = svgdoc.getElementById("rotoranimation");
-                                            }
+                                            //     rotor = svgdoc.getElementById("rotoranimation");
+                                            // }
 
-                                            window.addEventListener("load", loadServoSvg, false);
+                                            // window.addEventListener("load", loadServoSvg, false);
 
                                             
                                             function refreshServoSliderValue() {
                                                 document.getElementById('label_degree').innerHTML = "Angle: " + document.getElementById('input_degree').value + "°";
-                                                if (rotor != null) {
-                                                    rotor.values = document.getElementById('input_degree').value + " 200 362.36221"
-                                                }
+                                                // if (rotor != null) {
+                                                //     rotor.values = document.getElementById('input_degree').value + " 200 362.36221"
+                                                // }
                                             }
                                             refreshServoSliderValue();
                                         </script>
