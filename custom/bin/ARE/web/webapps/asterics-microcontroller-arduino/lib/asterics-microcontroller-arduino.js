@@ -1,4 +1,4 @@
-function demo1ledon() {
+function demo2ledon() {
     var propertyMap = JSON.stringify(
     {
         "ButtonGrid.1":{
@@ -9,7 +9,50 @@ function demo1ledon() {
     console.log("Setting model properties: " + propertyMap);
     // deployModelFromWebserverApplySettingsAndStartModel("http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoDigitalOutput.acs",propertyMap);
 
+    demo2circuitsvg = document.getElementById("demo2circuitsvg");
+    try { 
+        svgDemo2Circuit = demo2circuitsvg.getSVGDocument();
+    } catch (svgDemo2Circuit) {
+        svgDemo2Circuit = demo2circuitsvg.contentDocument;
+    }
+
+    demo2ledanimation = svgDemo2Circuit.getElementById("demo2ledanimation");
+    demo2ledanimation.outerHTML='<animate xmlns="http://www.w3.org/2000/svg" id="demo2ledanimation" calcMode="discrete" dur="1s" attributeName="fill" values="red; red;" repeatCount="indefinite"/>';
+
     
+    demo2svg = document.getElementById("demo2svg");
+    try { 
+        svgDemo2 = demo2svg.getSVGDocument();
+    } catch (svgDemo2) {
+        svgDemo2 = demo2svg.contentDocument;
+    }
+
+    demo2led = svgDemo2.getElementById("demo2led");
+    demo2led.outerHTML='<path xmlns="http://www.w3.org/2000/svg" inkscape:connector-curvature="0" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="demo2led" d="m 385.53406,308.49453 -256,0 c -11.771,0 -21.333,-9.573 -21.333,-21.333 0,-11.76 9.563,-21.333 21.333,-21.333 l 10.667,0 c 5.896,0 10.667,-4.771 10.667,-10.667 l 0,-138.667 c 0,-58.812996 47.854,-106.6669963 106.667,-106.6669963 58.813,0 106.666,47.8550003 106.666,106.6669963 l 0,138.667 c 0,5.896 4.771,10.667 10.667,10.667 l 10.666,0 c 11.771,0 21.333,9.573 21.333,21.333 0,11.76 -9.562,21.333 -21.333,21.333 z" style="fill:#ff5555;fill-opacity:1"/>';
+}
+
+
+
+function demo2ledoff() {
+    demo2circuitsvg = document.getElementById("demo2circuitsvg");
+    try { 
+        svgDemo2Circuit = demo2circuitsvg.getSVGDocument();
+    } catch (svgDemo2Circuit) {
+        svgDemo2Circuit = demo2circuitsvg.contentDocument;
+    }
+
+    demo2ledanimation = svgDemo2Circuit.getElementById("demo2ledanimation");
+    demo2ledanimation.outerHTML='<animate xmlns="http://www.w3.org/2000/svg" id="demo2ledanimation" calcMode="discrete" dur="1s" attributeName="fill" values="none; none;" repeatCount="indefinite"/>';
+
+    demo2svg = document.getElementById("demo2svg");
+    try { 
+        svgDemo2 = demo2svg.getSVGDocument();
+    } catch (svgDemo2) {
+        svgDemo2 = demo2svg.contentDocument;
+    }
+
+    demo2led = svgDemo2.getElementById("demo2led");
+    demo2led.outerHTML='<path xmlns="http://www.w3.org/2000/svg" inkscape:connector-curvature="0" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="demo2led" d="m 385.53406,308.49453 -256,0 c -11.771,0 -21.333,-9.573 -21.333,-21.333 0,-11.76 9.563,-21.333 21.333,-21.333 l 10.667,0 c 5.896,0 10.667,-4.771 10.667,-10.667 l 0,-138.667 c 0,-58.812996 47.854,-106.6669963 106.667,-106.6669963 58.813,0 106.666,47.8550003 106.666,106.6669963 l 0,138.667 c 0,5.896 4.771,10.667 10.667,10.667 l 10.666,0 c 11.771,0 21.333,9.573 21.333,21.333 0,11.76 -9.562,21.333 -21.333,21.333 z" style="fill:#c35555;fill-opacity:1"/>';
 }
 
 AmCharts.ready(function() {

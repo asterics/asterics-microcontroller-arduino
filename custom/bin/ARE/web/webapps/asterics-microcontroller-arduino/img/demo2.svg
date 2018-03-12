@@ -20,7 +20,7 @@
    height="3467.0496"><metadata
      id="metadata1251"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs1249" /><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -31,12 +31,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2495"
-     inkscape:window-height="1416"
+     inkscape:window-height="1323"
      id="namedview1247"
      showgrid="true"
-     inkscape:zoom="0.2218164"
-     inkscape:cx="3767.0483"
-     inkscape:cy="890.21863"
+     inkscape:zoom="0.62739152"
+     inkscape:cx="1120.8324"
+     inkscape:cy="1124.1639"
      inkscape:window-x="65"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -6276,7 +6276,7 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cssscsscsssccssscssc" /><path
        inkscape:connector-curvature="0"
-       id="path5-7"
+       id="demo2led"
        d="m 385.53406,308.49453 -256,0 c -11.771,0 -21.333,-9.573 -21.333,-21.333 0,-11.76 9.563,-21.333 21.333,-21.333 l 10.667,0 c 5.896,0 10.667,-4.771 10.667,-10.667 l 0,-138.667 c 0,-58.812996 47.854,-106.6669963 106.667,-106.6669963 58.813,0 106.666,47.8550003 106.666,106.6669963 l 0,138.667 c 0,5.896 4.771,10.667 10.667,10.667 l 10.666,0 c 11.771,0 21.333,9.573 21.333,21.333 0,11.76 -9.562,21.333 -21.333,21.333 z"
        style="fill:#c35555;fill-opacity:1" /><path
        id="path7-5"

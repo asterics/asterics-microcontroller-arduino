@@ -13,3 +13,20 @@ svg {
     display: block;
     max-height: 100%;
 }
+
+a.svgmodal {
+    position: relative;
+    display: inline-block; 
+}
+a.svgmodal:after {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left:0;
+}
+
+table {
+    border: 1;
+}

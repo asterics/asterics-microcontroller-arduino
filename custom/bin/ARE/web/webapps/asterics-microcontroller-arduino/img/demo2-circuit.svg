@@ -150,7 +150,7 @@
   <use xlink:href="#glyph3-1" x="57.29" y="46.67"/>
 </g>
 <path id="demo2led" fill="red" d="M 52.333156 68.139375 L 61.051906 68.139375 L 56.692531 59.619844 Z M 52.333156 68.139375 " transform="matrix(1,0,0,-1,-14.173,155.905)">
-  <animate calcMode="discrete" dur="1s" attributeName="fill" values="red; white" repeatCount="indefinite"/>
+  <animate id="demo2ledanimation" calcMode="discrete" dur="1s" attributeName="fill" values="red; white" repeatCount="indefinite"/>
 </path>
 <path style="fill:none;stroke-width:0.3985;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 52.333156 68.139375 L 61.051906 68.139375 L 56.692531 59.619844 Z M 52.333156 68.139375 " transform="matrix(1,0,0,-1,-14.173,155.905)"/>
 <path style="fill:rgb(0%,0%,0%);stroke-width:0.3985;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 56.692531 68.139375 L 56.692531 59.420625 " transform="matrix(1,0,0,-1,-14.173,155.905)"/>

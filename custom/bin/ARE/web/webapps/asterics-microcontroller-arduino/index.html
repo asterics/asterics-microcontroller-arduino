@@ -259,19 +259,27 @@
                         <p>For this demo you have to setup an electric circuitry as depicted below. </p>
                         <table border-spacing="0 1em"> 
                             <tr>
-                                <td width="60%">
+                                <td width="50%">
                                     
                                     <!-- <embed id="demo2svg" alt="Demo 2: Digital Output" src="img/demo1.svg" width="100%" class="svgmodal" onclick="javascript:alert('You are clicking on the svg EXAMPLE')"> -->
                                     
                                     <!-- <svg version="1.1" width="100%" height="100%" viewbox="0 0 50 30">
                                         <image xlink:href="img/demo2.svg" id="demo2svg" src="img/demo2.svg" width="100%" height="100%" class="svgmodal" alt="Demo 2: Digital Output"/>
                                     </svg> -->
-
-                                    <img id="demo1svg" class="svgmodal" alt="Demo 2: Digital Output" width="100%" src="img/demo2.svg">
+                                    <a class="svgmodal" alt="Demo 2: Digital Output" src="img/demo2.svg" >
+                                        <object id="demo2svg" data="img/demo2.svg" type="image/svg+xml" title="Demo 2: Digital Output" alt="Demo 2: Digital Output" width="100%">
+                                            <!-- Fallback image. FIXME: Exchange with png eventually, for broader support. -->
+                                            <img class="svgmodal" alt="Demo 2: Digital Output" width="100%" src="img/demo2.svg">
+                                        </object>
+                                    </a>
                                 </td>
                                 <td width="5%"></td>
-                                <td>
-                                    <img id="demo2circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" src="img/demo2-circuit.svg">
+                                <td width="40%">
+                                    <a class="svgmodal" alt="Arduino Circuit for Demo 2: Digital Output" src="img/demo2-circuit.svg">
+                                        <object id="demo2circuitsvg" data="img/demo2-circuit.svg" type="image/svg+xml" title="Arduino Circuit for Demo 2: Digital Output" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" height="100%" >
+                                            <img class="svgmodal" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" height="100%" src="img/demo2-circuit.svg">
+                                        </object>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -289,29 +297,9 @@
                                     <td width="25%"/>
                                     <td width="25%" valign="center">
                                         <button onclick="demo2ledon()" id="demo2buttonon">LED On</button><br>
-                                        <button id="demo2bottonoff">LED Off</button>
+                                        <button onclick="demo2ledoff()" id="demo2bottonoff">LED Off</button>
                                     </td>
                                     <td width="50%"/>
-                                    <!-- <td width="40%" valign="center">
-                                        <svg
-                                            xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                            xmlns:cc="http://creativecommons.org/ns#"
-                                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                            xmlns:svg="http://www.w3.org/2000/svg"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                                            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                            width="30mm"
-                                            height="20mm"
-                                            viewBox="100 100 400 400">
-                                            <circle
-                                                fill="red"
-                                                id="led"
-                                                cx="300"
-                                                cy="300"
-                                                r="100" />
-                                        </svg>
-                                        </td> -->
                                 </tr>
                             </table>
                         </p>
