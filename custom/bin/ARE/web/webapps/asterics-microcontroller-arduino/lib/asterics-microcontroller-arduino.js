@@ -1,160 +1,141 @@
-function demo2ledon() {
-    var propertyMap = JSON.stringify(
-    {
-        "ButtonGrid.1":{
-            "button1": "",
+var demo1, demo4, demo5;
+var demo1_circuit, demo4_circuit, demo5_circuit;
+
+var demo2, demo2_led, demo2_circuit, demo2_animation, demo2_circuit_led, demo2_circuit_status=false;
+var demo3, demo2_led, demo3_circuit, demo3_animation, demo3_circuit_led, demo3_circuit_text, demo3_circuit_status=true, demo3_dutycycle=100;
+
+var animation_default_speed = 1000;
+
+function load_svg(id) {
+    item_obj = document.getElementById(id);
+    try {
+        item_svg = item_obj.getSVGDocument();
+    } catch (item_svg) {
+        item_svg = item_obj.contentDocument;
+    }
+    return item_svg;
+}
+
+window.addEventListener("load", function load(event) {
+
+    // Remove listener again. One-time execution.
+    window.removeEventListener("load", load, false); 
+
+    // Demo 1: Digital Input
+    demo1 = load_svg("svg_demo1");
+    demo1_circuit = load_svg("svg_demo1_circuit");
+    
+    // Demo 2: Digital Ouput    
+    demo2 = load_svg("svg_demo2");
+    demo2_circuit = load_svg("svg_demo2_circuit");
+
+    demo2_led = demo2.getElementById("demo2_led");
+    demo2_circuit_led = demo2_circuit.getElementById("demo2_led");
+    
+    demo2_animation = setInterval(function demo2_animation() {
+        if (demo2_circuit_status) {
+            demo2_circuit_status = false;
+            demo2_led.setAttribute("fill","rgb(90%,20%,20%)");
+            demo2_circuit_led.setAttribute("fill","red");
+        } else {
+            demo2_circuit_status = true;
+            demo2_circuit_led.setAttribute("fill","white");
+            demo2_led.setAttribute("fill","rgb(45%,45%,45%)");
         }
-    });
+    },animation_default_speed);
+
+    // Demo 3: PWM
+    demo3 = load_svg("svg_demo3");
+    demo3_circuit = load_svg("svg_demo3_circuit");
+
+    demo3_led = demo3.getElementById("demo3_led");
+    demo3_circuit_led = demo3_circuit.getElementById("demo3_led");
+    slider = document.getElementById("demo3slider");
+    document.getElementById("demo3label").innerHTML = "Duty Cycle: " + slider.value + "%";
+
+    demo3_circuit_text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+    demo3_circuit_text.setAttribute("x","90");
+    demo3_circuit_text.setAttribute("y","83");
+    demo3_circuit_text.setAttribute("style","font-style:normal;font-weight:normal;font-size:24px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
+    demo3_circuit.getElementById("svg2").appendChild(demo3_circuit_text);
     
-    console.log("Setting model properties: " + propertyMap);
-    // deployModelFromWebserverApplySettingsAndStartModel("http://asterics.github.io/AsTeRICS/webapps/asterics-microcontroller-arduino/models/ArduinoDigitalOutput.acs",propertyMap);
+    demo3_animation = setInterval(function demo3_animation() {
+        gb_value = 100 - demo3_dutycycle;
+        rgb_value = "rgb(100%," + gb_value + "%," + gb_value + "%)";
 
-    demo2circuitsvg = document.getElementById("demo2circuitsvg");
-    try { 
-        svgDemo2Circuit = demo2circuitsvg.getSVGDocument();
-    } catch (svgDemo2Circuit) {
-        svgDemo2Circuit = demo2circuitsvg.contentDocument;
-    }
+        gb_value_ard = 20 + 25 * (gb_value/100);
+        r_value_ard = 45 + 45 * ((100-gb_value)/100);
+        rgb_value_ard = "rgb(" + r_value_ard + "%," + gb_value_ard + "%," + gb_value_ard + "%)";
 
-    demo2ledanimation = svgDemo2Circuit.getElementById("demo2ledanimation");
-    demo2ledanimation.outerHTML='<animate xmlns="http://www.w3.org/2000/svg" id="demo2ledanimation" calcMode="discrete" dur="1s" attributeName="fill" values="red; red;" repeatCount="indefinite"/>';
+        demo3_led.setAttribute("fill",rgb_value_ard);
+        demo3_circuit_led.setAttribute("fill",rgb_value);
+        demo3_circuit_text.innerHTML = String(demo3_dutycycle) + "%";
+        
+        if (demo3_dutycycle > 0) {
+            demo3_dutycycle -= 10; 
+        } else {
+            demo3_dutycycle = 100;
+        }
+    },animation_default_speed);
 
+
+    // Load references to svg elements
+    demo4 = load_svg("svg_demo4");
+    demo5 = load_svg("svg_demo5");
+
+    demo4_circuit = load_svg("svg_demo4_circuit");
+    demo5_circuit = load_svg("svg_demo5_circuit");
     
-    demo2svg = document.getElementById("demo2svg");
-    try { 
-        svgDemo2 = demo2svg.getSVGDocument();
-    } catch (svgDemo2) {
-        svgDemo2 = demo2svg.contentDocument;
-    }
-
-    demo2led = svgDemo2.getElementById("demo2led");
-    demo2led.outerHTML='<path xmlns="http://www.w3.org/2000/svg" inkscape:connector-curvature="0" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="demo2led" d="m 385.53406,308.49453 -256,0 c -11.771,0 -21.333,-9.573 -21.333,-21.333 0,-11.76 9.563,-21.333 21.333,-21.333 l 10.667,0 c 5.896,0 10.667,-4.771 10.667,-10.667 l 0,-138.667 c 0,-58.812996 47.854,-106.6669963 106.667,-106.6669963 58.813,0 106.666,47.8550003 106.666,106.6669963 l 0,138.667 c 0,5.896 4.771,10.667 10.667,10.667 l 10.666,0 c 11.771,0 21.333,9.573 21.333,21.333 0,11.76 -9.562,21.333 -21.333,21.333 z" style="fill:#ff5555;fill-opacity:1"/>';
-}
-
-
-
-function demo2ledoff() {
-    demo2circuitsvg = document.getElementById("demo2circuitsvg");
-    try { 
-        svgDemo2Circuit = demo2circuitsvg.getSVGDocument();
-    } catch (svgDemo2Circuit) {
-        svgDemo2Circuit = demo2circuitsvg.contentDocument;
-    }
-
-    demo2ledanimation = svgDemo2Circuit.getElementById("demo2ledanimation");
-    demo2ledanimation.outerHTML='<animate xmlns="http://www.w3.org/2000/svg" id="demo2ledanimation" calcMode="discrete" dur="1s" attributeName="fill" values="none; none;" repeatCount="indefinite"/>';
-
-    demo2svg = document.getElementById("demo2svg");
-    try { 
-        svgDemo2 = demo2svg.getSVGDocument();
-    } catch (svgDemo2) {
-        svgDemo2 = demo2svg.contentDocument;
-    }
-
-    demo2led = svgDemo2.getElementById("demo2led");
-    demo2led.outerHTML='<path xmlns="http://www.w3.org/2000/svg" inkscape:connector-curvature="0" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="demo2led" d="m 385.53406,308.49453 -256,0 c -11.771,0 -21.333,-9.573 -21.333,-21.333 0,-11.76 9.563,-21.333 21.333,-21.333 l 10.667,0 c 5.896,0 10.667,-4.771 10.667,-10.667 l 0,-138.667 c 0,-58.812996 47.854,-106.6669963 106.667,-106.6669963 58.813,0 106.666,47.8550003 106.666,106.6669963 l 0,138.667 c 0,5.896 4.771,10.667 10.667,10.667 l 10.666,0 c 11.771,0 21.333,9.573 21.333,21.333 0,11.76 -9.562,21.333 -21.333,21.333 z" style="fill:#c35555;fill-opacity:1"/>';
-}
-
-AmCharts.ready(function() {
-    makeLineChart();
 });
 
-var lineChartData = [{
-    "continent": "Australia",
-    "mountain": "Kosciusko",
-    "height": 2228
-}, {
-    "continent": "Africa",
-    "mountain": "Kilimanjaro",
-    "height": 5895
-}, {
-    "continent": "Antarctica",
-    "mountain": "Aconcagua",
-    "height": 4897
-},
+/* 
+ * Demo 2: Digital Output
+ */
+function demo2_application(id) {
+    // Remove startup animation
+    clearInterval(demo2_animation);
 
-{
-    "continent": "Europe",
-    "mountain": "Elbrus",
-    "height": 5642
-}, {
-    "continent": "Asia",
-    "mountain": "Everest",
-    "height": 8850
-},
-
-{
-    "continent": "South America",
-    "mountain": "Aconcagua",
-    "height": 6960
-}, {
-    "continent": "North America",
-    "mountain": "McKinley",
-    "height": 6194
+    if (id == "demo2buttonon") {
+        demo2_circuit_led.setAttribute("fill","red");
+        demo2_led.setAttribute("fill","rgb(90%,20%,20%)");
+    } else if (id == "demo2buttonoff") {
+        demo2_circuit_led.setAttribute("fill","white");
+        demo2_led.setAttribute("fill","rgb(45%,45%,45%)");
+    }
 }
-];
 
-function makeLineChart() {
+/* 
+ * Demo 3: PWM
+ */
+function demo3_application(id) {
+    // Remove startup animation
+    clearInterval(demo3_animation);
 
+    slider = document.getElementById("demo3slider");
+    label = document.getElementById("demo3label");
+    dutycycle = slider.value;
+
+    if (id == "demo3buttonon") {
+        demo3_circuit_status = true;
+    } else if (id == "demo3buttonoff") {
+        demo3_circuit_status = false;
+    } else if (id == "demo3slider") {
+    }
     
+    label.innerHTML = "Duty Cycle: " + dutycycle + "%";
+    
+    if (demo3_circuit_status) {
+        gb_value = 100 - dutycycle;
+        rgb_value = "rgb(100%," + gb_value + "%," + gb_value + "%)";
 
-    // SERIAL CHART
-    var lineChart = new AmCharts.AmSerialChart();
-    lineChart.dataProvider = lineChartData;
-    lineChart.fontSize = 18;
-    lineChart.fontFamily = 'Covered By Your Grace';
-    lineChart.color = "#FFFFFF";
-    lineChart.categoryField = "continent";
-    lineChart.marginLeft = 117;
-    lineChart.startDuration = 0;
-    lineChart.handDrawn = true;
-
-    lineChart.backgroundColor = "#2d2b2c";
-
-    var balloon = lineChart.balloon;
-    balloon.adjustBorderColor = false;
-    balloon.borderColor = "#000000";
-    balloon.fillColor = "#FFFFFF";
-    balloon.verticalPadding = 0;
-
-    var valueAxis = new AmCharts.ValueAxis();
-    valueAxis.minimum = 0;
-    valueAxis.ignoreAxisWidth = true;
-    valueAxis.axisColor = "#FFFFFF";
-    valueAxis.gridColor = "#FFFFFF";
-    lineChart.addValueAxis(valueAxis);
-
-    // AXES
-    // category
-    var categoryAxis = lineChart.categoryAxis;
-    categoryAxis.labelRotation = 90;
-    categoryAxis.gridPosition = "start";
-    categoryAxis.axisColor = "#FFFFFF";
-    categoryAxis.labelRotation = 45;
-    categoryAxis.gridAlpha = 0;
-
-    // GRAPH
-    var graph = new AmCharts.AmGraph();
-    graph.valueField = "height";
-    graph.balloonText = "<span style='font-size:14px'>[[category]]</span><br>[[mountain]]: [[value]] m.";
-    graph.lineAlpha = 1;
-    graph.lineColor = "#FFFFFF";
-    graph.fillAlphas = 0.8;
-    graph.lineThickness = 4;
-    graph.bullet = "round";
-    graph.pattern = {
-        url: "patterns/chalk/pattern2.jpg",
-        width: 600,
-        height: 600
-    };
-    lineChart.addGraph(graph);
-
-    // CURSOR
-    var chartCursor = new AmCharts.ChartCursor();
-    chartCursor.cursorAlpha = 0;
-    chartCursor.zoomable = false;
-    chartCursor.categoryBalloonEnabled = false;
-    lineChart.addChartCursor(chartCursor);
-
-    lineChart.write("lineChartDiv");
+        gb_value_ard = 20 + 25 * (gb_value/100);
+        r_value_ard = 45 + 45 * ((100-gb_value)/100);
+        rgb_value_ard = "rgb(" + r_value_ard + "%," + gb_value_ard + "%," + gb_value_ard + "%)";
+    } else {
+        rgb_value = "rgb(100%,100%,100%)";
+        rgb_value_ard = "rgb(45%,45%,45%)";
+    }
+    demo3_circuit_text.innerHTML = String(dutycycle) + "%";
+    demo3_led.setAttribute("fill",rgb_value_ard);
+    demo3_circuit_led.setAttribute("fill",rgb_value);
 }

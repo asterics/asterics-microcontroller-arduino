@@ -80,7 +80,7 @@
                             <a class="dropdown-item" href="#demo1">Demo 1: Digital Input</a>
                             <a class="dropdown-item" href="#demo2">Demo 2: Digital Output</a>
                             <a class="dropdown-item" href="#demo3">Demo 3: PWM</a>
-                            <a class="dropdown-item" href="#demo4">Demo 4: ADC</a>
+                            <a class="dropdown-item" href="#demo5">Demo 4: ADC</a>
                             <a class="dropdown-item" href="#demo5">Demo 5: Servo PWM</a>
                         </div>
                     </li>
@@ -122,6 +122,8 @@
             <div class="container">
             
                 <!-- Section 1 -->
+                <!-- OBJECTIVE
+                    ============================================================================================================= -->
                 <div class="col" id="objective">
                     <h2>Objective</h2>
                     <p>Digital Input/Output, PWM and ADC with the microcontroller Arduino Uno.<span class="sr-only">(current)</span></p>
@@ -129,6 +131,8 @@
                 </div><hr>
 
                 <!-- Section 2 -->
+                <!-- DESCRIPTION
+                    ============================================================================================================= -->
                 <div class="col" id="description">
                     <h2>Description</h2>
                     <p>The Arduino Uno microcontroller platform supports digital input and output and analog input.
@@ -146,6 +150,8 @@
                 </div><hr>
 
                 <!-- Section 3 -->
+                <!-- REQUIREMENTS
+                    ============================================================================================================= -->
                 <div class="col" id="requirements">
                     <h2>Requirements</h2>
                     <p>For this demo you need
@@ -199,10 +205,14 @@
                 </div>
 
                 <!-- Section 4 -->
+                <!-- DEMOS
+                    ============================================================================================================= -->
                 <div class="col" id="demos">
                     <h2>Demos</h2>
                     <p></p>
 
+                    <!-- Demo 1: Digital Input
+                    ============================================================================================================= -->
                     <div class="col" id="demo1">
                         <h3>Demo 1: Digital Input</h3>
                         <p>The first demo introduces you to the digital input capabilities of the <em>Arduino Uno</em> platform.
@@ -213,12 +223,21 @@
                         <p>For this demo you have to setup and electric circuitry as depcited below. </p>
                         <table border-spacing="0 1em">
                             <tr>
-                                <td width="60%">
-                                    <img id="demo1svg" class="svgmodal" alt="Demo 1: Digital Input" width="100%" src="img/demo1.svg">
+                                <td width="60%"> <!-- LEFT image: Arduino Uno -->
+                                    <a class="svgmodal" alt="Demo 1: Digital Input" src="img/demo1.svg">
+                                        <object id="svg_demo1" type="image/svg+xml" data="img/demo1.svg" title="Demo 1: Digital Input" alt="Demo 1: Digital Input" width="100%">
+                                            <!-- Fallback image. FIXME: Exchange with png eventually, for broader support. -->
+                                            <img alt="Demo 1: Digital Input" width="100%" src="img/demo1.svg">
+                                        </object>
+                                    </a>
                                 </td>
                                 <td width="5%"></td>
-                                <td>
-                                    <img id="demo1circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 1: Digital Input" width="100%" src="img/demo1-circuit.svg">
+                                <td width="35%"> <!-- RIGHT image: circuit -->
+                                    <a class="svgmodal" alt="Arduino Circuit for Demo 1: Digital Input" src="img/demo1-circuit.svg">
+                                        <object id="svg_demo1_circuit" type="image/svg+xml" data="img/demo1-circuit.svg" title="Arduino Circuit for Demo 1: Digital Input" alt="Arduino Circuit for Demo 1: Digital Input" width="100%">
+                                            <img alt="Arduino Circuit for Demo 1: Digital Input" width="100%" src="img/demo1-circuit.svg">
+                                        </object>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -249,6 +268,8 @@
                     </div>
                     <hr>
                     
+                    <!-- Demo 2: Digital Output
+                    ============================================================================================================= -->
                     <div class="col" id="demo2">
                         <h3>Demo 2: Digital Output</h3>
                         <p>The second demo introduces you to the digital output capabilities that are included with the <em>Arduino Uno</em> platform.
@@ -259,25 +280,18 @@
                         <p>For this demo you have to setup an electric circuitry as depicted below. </p>
                         <table border-spacing="0 1em"> 
                             <tr>
-                                <td width="50%">
-                                    
-                                    <!-- <embed id="demo2svg" alt="Demo 2: Digital Output" src="img/demo1.svg" width="100%" class="svgmodal" onclick="javascript:alert('You are clicking on the svg EXAMPLE')"> -->
-                                    
-                                    <!-- <svg version="1.1" width="100%" height="100%" viewbox="0 0 50 30">
-                                        <image xlink:href="img/demo2.svg" id="demo2svg" src="img/demo2.svg" width="100%" height="100%" class="svgmodal" alt="Demo 2: Digital Output"/>
-                                    </svg> -->
+                                <td width="60%"> <!-- LEFT image: Arduino Uno -->
                                     <a class="svgmodal" alt="Demo 2: Digital Output" src="img/demo2.svg" >
-                                        <object id="demo2svg" data="img/demo2.svg" type="image/svg+xml" title="Demo 2: Digital Output" alt="Demo 2: Digital Output" width="100%">
-                                            <!-- Fallback image. FIXME: Exchange with png eventually, for broader support. -->
+                                        <object id="svg_demo2" type="image/svg+xml" data="img/demo2.svg" title="Demo 2: Digital Output" alt="Demo 2: Digital Output" width="100%">
                                             <img class="svgmodal" alt="Demo 2: Digital Output" width="100%" src="img/demo2.svg">
                                         </object>
                                     </a>
                                 </td>
                                 <td width="5%"></td>
-                                <td width="40%">
+                                <td width="35%"> <!-- RIGHT image: circuit -->
                                     <a class="svgmodal" alt="Arduino Circuit for Demo 2: Digital Output" src="img/demo2-circuit.svg">
-                                        <object id="demo2circuitsvg" data="img/demo2-circuit.svg" type="image/svg+xml" title="Arduino Circuit for Demo 2: Digital Output" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" height="100%" >
-                                            <img class="svgmodal" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" height="100%" src="img/demo2-circuit.svg">
+                                        <object id="svg_demo2_circuit" data="img/demo2-circuit.svg" type="image/svg+xml" title="Arduino Circuit for Demo 2: Digital Output" alt="Arduino Circuit for Demo 2: Digital Output" width="100%" >
+                                            <img alt="Arduino Circuit for Demo 2: Digital Output" width="100%" src="img/demo2-circuit.svg">
                                         </object>
                                     </a>
                                 </td>
@@ -296,8 +310,8 @@
                                 <tr>
                                     <td width="25%"/>
                                     <td width="25%" valign="center">
-                                        <button onclick="demo2ledon()" id="demo2buttonon">LED On</button><br>
-                                        <button onclick="demo2ledoff()" id="demo2bottonoff">LED Off</button>
+                                        <button onclick="demo2_application(this.id)" id="demo2buttonon">LED On</button><br>
+                                        <button onclick="demo2_application(this.id)" id="demo2buttonoff">LED Off</button>
                                     </td>
                                     <td width="50%"/>
                                 </tr>
@@ -312,6 +326,8 @@
                     </div>
                     <hr>
                     
+                    <!-- Demo 3: PWM
+                    ============================================================================================================= -->
                     <div class="col" id="demo3">
                         <h3>Demo 3: PWM</h3>
                         <p>The third demo shows you how to use the PWM capabilities of the digital outputs of <em>Arduino Uno</em> to dim a LED light.
@@ -321,12 +337,20 @@
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
-                                <td width="60%">
-                                    <img id="demo3svg" class="svgmodal" alt="Demo 3: PWM" width="100%" src="img/demo3.svg">
+                                <td width="60%"> <!-- LEFT image: Arduino Uni -->
+                                    <a class="svgmodal" alt="Demo 3: PWM" src="img/demo3.svg">
+                                        <object id="svg_demo3" type="image/svg+xml" data="img/demo3.svg" title="Demo 3: PWM" alt="Demo 3: PWM" width="100%">
+                                            <img alt="Demo 3: PWM" width="100%" src="img/demo3.svg">
+                                        </object>
+                                    </a>
                                 </td>
                                 <td width="5%"></td>
-                                <td>
-                                    <img id="demo3circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 3: PWM" width="100%" src="img/demo3-circuit.svg">
+                                <td width="35%"> <!-- RIGHT image: circuit -->
+                                    <a class="svgmodal" alt="Arduino Circuit for Demo 3: PWM" src="img/demo3-circuit.svg" >
+                                        <object id="svg_demo3_circuit" type="image/svg+xml" data="img/demo3-circuit.svg" title="Arduino Circuit for Demo 3: PWM" alt="Arduino Circuit for Demo 3: PWM" width="100%">
+                                            <img alt="Arduino Circuit for Demo 3: PWM" width="100%" src="img/demo3-circuit.svg">
+                                        </object>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -344,18 +368,12 @@
                                 <tr>
                                     <td width="25%"/>
                                     <td width="25%">
-                                        <button id="demo3buttonon">LED On</button><br>
-                                        <button id="demo3buttonoff">LED Off</button>
+                                        <button onclick="demo3_application(this.id)" id="demo3buttonon">LED On</button><br>
+                                        <button onclick="demo3_application(this.id)" id="demo3buttonoff">LED Off</button>
                                     </td>
                                     <td width="50%">
-                                        <label id="label_dutycycle">Duty Cycle</label><br>
-                                        <input title="PWM Duty Cycle" type="range" id="input_dutycycle" value="50" oninput="refreshPWMSliderValue()">
-                                        <script>
-                                            function refreshPWMSliderValue() {
-                                                document.getElementById('label_dutycycle').innerHTML = "Duty Cycle: " + document.getElementById('input_dutycycle').value + " %";
-                                            }
-                                            refreshPWMSliderValue();
-                                        </script>
+                                        <label id="demo3label">Duty Cycle</label><br>
+                                        <input oninput="demo3_application(this.id)" id="demo3slider" title="PWM Duty Cycle" type="range" value="50">
                                     </td>
                                     <td width="0%"/>
                                 </tr>
@@ -371,6 +389,8 @@
                     </div>
                     <hr>
 
+                    <!-- Demo 4: ADC
+                    ============================================================================================================= -->
                     <div class="col" id="demo4">
                         <h3>Demo 4: ADC</h3>
                         <p>The fourth demo shows how to measure an analog value and use its digital representation in an ACS model.</p>
@@ -379,12 +399,20 @@
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
-                                <td width="60%">
-                                    <img id="demo4svg" class="svgmodal" alt="Demo 4: ADC" width="100%" src="img/demo4.svg">
+                                <td width="60%"> <!-- LEFT image: Arduino Uno -->
+                                    <a class="svgmodal" alt="Demo 4: ADC" src="img/demo4.svg" >
+                                        <object id="svg_demo4" type="image/svg+xml" data="img/demo4.svg" title="Demo 4: ADC" alt="Demo 4: ADC" width="100%" >
+                                            <img alt="Demo 4: ADC" width="100%" src="img/demo3.svg" >
+                                        </object>
+                                    </a>
                                 </td>
                                 <td width="5%"></td> 
-                                <td>
-                                    <img id="demo4circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 4: ADC" width="100%" src="img/demo4-circuit.svg">
+                                <td width="35%"> <!-- RIGHT image: circuit -->
+                                    <a class="svgmodal" alt="Arduino Circuit for Demo 4: ADC" src="img/demo4-circuit.svg" >
+                                        <object id="svg_demo4_circuit" type="image/svg+xml" data="img/demo4-circuit.svg" title="Arduino Circuit for Demo 4: ADC" alt="Arduino Circuit for Demo 4: ADC" width="100%">
+                                            <img alt="Arduino Circuit for Demo 4: ADC" width="100%" src="img/demo4-circuit.svg">
+                                        </object>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -419,6 +447,8 @@
                     </div>
                     <hr>
 
+                    <!-- Demo 5: Servo PWM
+                    ============================================================================================================= -->
                     <div class="col" id="demo5">
                         <h3>Demo 5: Servo PWM</h3>
 
@@ -426,12 +456,20 @@
                         <p>For this demo you have to setup an electric circuitry as depcited below.</p>
                         <table> 
                             <tr>
-                                <td width="60%">
-                                    <img id="demo5svg" class="svgmodal" alt="Demo 5: Servo PWM" width="100%" src="img/demo5.svg" type="image/svg+xml">
+                                <td width="60%"> <!-- LEFT image: Arduino Uno -->
+                                    <a class="svgmodal" alt="Demo 5: Servo PWM" src="img/demo5.svg" >
+                                        <object id="svg_demo5" type="image/svg+xml" data="img/demo5.svg" title="Demo 5: Servo PWM" alt="Demo 5: Servo PWM" width="100%" >
+                                            <img alt="Demo 5: Servo PWM" width="100%" src="img/demo3.svg" >
+                                        </object>
+                                    </a>
                                 </td>
                                 <td width="5%"></td>  
-                                <td> 
-                                    <img id="demo5circuitsvg" class="svgmodal" alt="Arduino Circuit for Demo 5: Servo PWM" width="100%" src="img/demo5-circuit.svg">
+                                <td width="35%"> <!-- RIGHT image: circuit -->
+                                    <a class="svgmodal" alt="Arduino Circuit for Demo 5: Servo PWM" src="img/demo5-circuit.svg" >
+                                        <object id="svg_demo5_circuit" type="image/svg+xml" data="img/demo5-circuit.svg" title="Arduino Circuit for Demo 5: Servo PWM" alt="Arduino Circuit for Demo 5: Servo PWM" width="100%">
+                                            <img alt="Arduino Circuit for Demo 5: Servo PWM" width="100%" src="img/demo5-circuit.svg">
+                                        </object>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -495,6 +533,8 @@
                 </div><hr>
 
                 <!-- Section 5 -->
+                <!-- ADDITIONAL MATERIAL
+                    ============================================================================================================= -->
                 <div class="col" id="additional_material">
                     <h2>Additional Material</h2>
                     <p>This section contains additional support material related to this demo tutorial.</p>
