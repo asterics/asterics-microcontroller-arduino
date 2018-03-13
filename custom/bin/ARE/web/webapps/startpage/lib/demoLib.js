@@ -25,7 +25,7 @@ function loadFileFromWebServer(relFilePath, successCallback) {
 		pathFix='/AsTeRICS';
 		console.log("Adding pathFix: "+pathFix);
 	}
-	// relFilePath=location.origin+pathFix+'/'+relFilePath;
+	relFilePath=location.origin+pathFix+'/'+relFilePath;
 	console.log('Fetching file from webserver: '+relFilePath);
 	
 	/*
