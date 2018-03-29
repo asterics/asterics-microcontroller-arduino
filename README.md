@@ -1,4 +1,16 @@
-# AsTeRICS based AT solution
+# AsTeRICS Microcontroller Arduino
+
+This folder contains a solutions for microcontroller based applications, including digital I/O, ADC and (servo) PWM.
+
+Following examples are included:
+
+* Demo 1: Digital Input
+* Demo 2: Digital Output
+* Demo 3: PWM
+* Demo 4: ADC
+* Demo 5: Servo PWM
+
+demonstrating how to integrate microcontroller functionality, in particular of an Arduino microcontroller, in your AsTeRICS application.
 
 This folder contains an AsTeRICS based solution using the [APE (AsTeRICS Packaging Environment)](https://github.com/asterics/AsTeRICS/wiki/AsTeRICS-Packaging-Environment-(APE)) template folder structure.
 
@@ -8,7 +20,8 @@ You need at least
 1. [Java Runtime Environment 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html). **Some plugins only work with a 32-bit JRE.** You can have mixed installations of JREs/JDKs (32bit, 64bit). APE automatically prefers the 32-bit JDK/JRE on windows for the run targets. If you want to override this, set the property ```fx.platform.basedir``` in the file [APE.properties](APE.properties) to the path of your JDK/JRE.
 If you want to create deployment files (.exe, .deb,...), you must have installed additional dependencies like a JDK.
 2. [apache ant build framework (version >= 1.9.1)](http://ant.apache.org/bindownload.cgi) **or** an IDE for Java Developers, e.g. [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon3) (already contains ant)
-2. [AsTeRICS 3.0](https://github.com/asterics/AsTeRICS/releases/tag/v3.0) installed **or** a snapshot of [AsTeRICS](https://github.com/asterics/AsTeRICS) cloned to a parallel folder of the project.
+3. [AsTeRICS 3.0](https://github.com/asterics/AsTeRICS/releases/tag/v3.0) installed **or** a snapshot of [AsTeRICS](https://github.com/asterics/AsTeRICS) cloned to a parallel folder of the project.
+4. [Arduino Uno SMD R3](https://www.amazon.de/Arduino-Platine-Rev-Elektronik-Lernpaket/dp/364565139X/ref=sr_1_1?s=books&ie=UTF8&qid=1520162725&sr=1-1&keywords=Arduino+Uno+Rev.+) with [AsTeRICS CIM](https://github.com/asterics/AsTeRICS/blob/master/CIMs/Arduino/Readme.txt) installed
 
 # Demos / Examples
 
@@ -39,6 +52,14 @@ To create a native installer open a console and run
 ```ant deploy```
 
 Please also check additional [dependencies](https://github.com/asterics/AsTeRICS/tree/master/bin/APE#dependencies) and [usage examples](https://github.com/asterics/AsTeRICS/tree/master/bin/APE#example-usages-of-the-build-infrastructure). 
+
+# Related Videos
+* [Camera Mouse Demo Screencast](https://youtu.be/P9qJAWegkFM?t=1955)
+* [Camera Mouse Model Creation Screencast](https://youtu.be/P9qJAWegkFM?t=2228)
+* [Camera Mouse Rollout at GuadalInfo Telecenters (10.000 Workstations)](https://www.youtube.com/watch?v=of0643WQ85Q)
+
+# Related Tutorials
+* [Camera Mouse Creation StepbyStep Tutorial](https://github.com/asterics/AsTeRICS/blob/master/Documentation/AsTeRICS_CameraMouseCreation_StepbyStep_Tutorial.pdf)
 
 # Folder structure
 Subsequently you can see the simplified folder structure of an APE-based project, which contains an ant build file (**```build.xml```**), a property-based configuration file (**```APE.properties```**), the **```custom/bin/ARE```** folder to store the solution-specific files (e.g. model files), a **```build```** folder and a **```package```** folder for native installer customization. 
