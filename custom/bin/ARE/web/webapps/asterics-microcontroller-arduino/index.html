@@ -178,7 +178,7 @@
                             <p>Install <font face="monospace">avrdude</font></p>
                             <pre class="bash">$ sudo apt-get install avrdude</pre>
                             <p>Flash Arduino Uno</p>
-                            <pre class="bash"> $ avrdude -pm328p         \ <br>           -P /dev/ttyACM1 \ <br>           -c stk500v1     \ <br>           -b 115200       \ <br>           -I flash:w:~/git/asterics/AsTeRICS/CIMs/Arduino/build/Arduino.hex \ <br>           -F</pre>
+                            <pre class="bash"> $ avrdude -pm328p         \ <br>           -P /dev/ttyACM1 \ <br>           -c stk500v1     \ <br>           -b 115200       \ <br>           -U flash:w:/absolute/path/to/AsTeRICS/CIMs/Arduino/build/Arduino.hex \ <br>           -F</pre>
                         </div><br>
                                                 
                         <div class="col">
@@ -186,7 +186,7 @@
                             <p>Install <font face="monospace">avrdude</font></p>
                             <pre class="bash"> $ brew install avrdude --with-usb</pre>
                             <p>Flash Arduino Uno</p>
-                            <pre class="bash"> $ avrdude -pm328p         \ <br>           -P /dev/ttyACM1 \ <br>           -c stk500v1     \ <br>           -b 115200       \ <br>           -I flash:w:~/git/asterics/AsTeRICS/CIMs/Arduino/build/Arduino.hex \ <br>           -F</pre>
+                            <pre class="bash"> $ avrdude -pm328p         \ <br>           -P /dev/ttyACM1 \ <br>           -c stk500v1     \ <br>           -b 115200       \ <br>           -U flash:w:/absolute/path/to/AsTeRICS/CIMs/Arduino/build/Arduino.hex \ <br>           -F</pre>
                         </div><br>
 
 

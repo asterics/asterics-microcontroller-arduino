@@ -11,7 +11,8 @@ function defaultSuccessCallback(data, status) {
     // console.log("Success message: "+data); 
 }
 function defaultErrorCallback(status, e) { 
-    // alert("Error message: "+ e); 
+    // alert("Error message: "+ e);
+    alert("Connection with ARE failed.\n Check if your ARE is running on your machine and retry.");
 }
 function defaultUpdatePropertyCallback (data, status) {
     if (JSON.parse(data).length == 0) {
