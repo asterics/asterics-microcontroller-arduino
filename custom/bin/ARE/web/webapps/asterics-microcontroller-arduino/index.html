@@ -34,9 +34,22 @@
         <script src="../startpage/clientExample/javascript/JSmap.js"></script>
         <script src="../startpage/clientExample/javascript/areCommunicator.js"></script>
 
-        <!-- provided by this repository, should be part of the framework later -->
-        <script src="../startpage/lib/demoLib.js"></script>
-        		
+		<!-- provided by this repository, should be part of the framework later -->
+		<script src="../startpage/lib/webAppUtils.js"></script>
+		<script src="../startpage/lib/modelManipulation.js"></script>
+	 	
+	 	<!-- inline code to initialize REST API and automatic model <-> widget synchronization -->
+	 	<script type="text/javascript">
+			//Set the base URI of the running ARE instance.     
+			//You could also make this configurable by the user.
+			setBaseURI("http://localhost:8081/rest/");
+	
+			//Define path of model file on the webserver.
+			var modelFilePathOnWebserver='webapps/asterics-solution-template/models/nameOfModelFile.acs';
+			//Init window.onload function to automatically update all widgets with a model binding with the values of the currently deployed model.
+			window.onload=updateWidgetsFromDeployedModel;		
+		</script>       		
+		
 		<title>AsTeRICS Arduino Microcontroller</title>
 	</head>
  
@@ -237,6 +250,7 @@
 
                         <h4>Demo Application</h4>
                         <p>Use the <em>left</em> button to start and deploy the model to a (locally) running ARE instance, and start to capture push button (S<sub>1</sub>) activity.
+                                                      
                             <table class="demo-application-table" width="100%">
                                 <tr>
                                     <td align="center" class="demo-application-cell demo-cell-start" width="15%">
