@@ -37,14 +37,6 @@ to build all the dependencies and start the ARE.
 
 You can also start the ARE using the ARE start-scripts in the ```build/merged/bin/ARE``` folder.
 
-# Build project
-
-Open a console or use your favorite IDE and run
-
-```ant build-all```
-
-to build all the dependencies and merge all files together in the ```build/merged/bin/ARE``` folder
-
 # Release project
 
 To create a native installer open a console and run
@@ -52,14 +44,6 @@ To create a native installer open a console and run
 ```ant deploy```
 
 Please also check additional [dependencies](https://github.com/asterics/AsTeRICS/tree/master/bin/APE#dependencies) and [usage examples](https://github.com/asterics/AsTeRICS/tree/master/bin/APE#example-usages-of-the-build-infrastructure). 
-
-# Related Videos
-* [Camera Mouse Demo Screencast](https://youtu.be/P9qJAWegkFM?t=1955)
-* [Camera Mouse Model Creation Screencast](https://youtu.be/P9qJAWegkFM?t=2228)
-* [Camera Mouse Rollout at GuadalInfo Telecenters (10.000 Workstations)](https://www.youtube.com/watch?v=of0643WQ85Q)
-
-# Related Tutorials
-* [Camera Mouse Creation StepbyStep Tutorial](https://github.com/asterics/AsTeRICS/blob/master/Documentation/AsTeRICS_CameraMouseCreation_StepbyStep_Tutorial.pdf)
 
 # Folder structure
 Subsequently you can see the simplified folder structure of an APE-based project, which contains an ant build file (**```build.xml```**), a property-based configuration file (**```APE.properties```**), the **```custom/bin/ARE```** folder to store the solution-specific files (e.g. model files), a **```build```** folder and a **```package```** folder for native installer customization. 
@@ -77,6 +61,12 @@ custom
       |- <custom model file>.acs
       |- ...
     |-profile
+    |- web
+      |- webapps
+        |- startpage
+          |- start.html
+        |- <your webapps folder>
+          |- index.html
 package
   |- linux
   |- windows
@@ -95,9 +85,9 @@ Before the project can be run it must be [built](#build-project) (builds the AsT
 
 # Recommended workflow
 
-1. Save custom files (models, images, config files,...) to the custom/bin/ARE folder or modify them
-2. Call ```ant run```
-3. In case you have a Web UI, open [http://localhost:8081](http://localhost:8081)
+1. Save custom files (models, images, config files,...) to the custom/bin/ARE folder or subfolders (e.g. web/...) or modify them
+2. Call ```ant APE-copy & ant run-quick```
+3. This should automatically open [http://localhost:8081](http://localhost:8081) in your standard browser.
 4. If you want to modify the running model, press 'F8' to open it in the WebACS, then modify and upload it. To save successful modifications permanently, save the model file to the ```custom/bin/ARE/models``` folder again.
 5. Kill program and go to step 1
 
@@ -117,7 +107,11 @@ APE automatically searches for an ARE at the following locations:
 3. ```../../AsTeRICS/bin/ARE``` (if it's an AT solution folder structure)
 4. ```C:/Program Files (x86)/AsTeRICS/ARE/``` (if there is an Asterics installation on windows)
 
-You can also set ARE.baseURI manually, either in the file ```APE.properties``` or within an ant call, e.g. ```ant -DARE.baseURI=<path to ARE> run```
+You can also set ARE.baseURI manually, either in the file ```APE.properties``` or within an ant call, e.g. 
+
+```ant -DARE.baseURI=<path to ARE> run```
+  
+```ant -DARE.baseURI=D:/AsTeRICS/AsTeRICS/bin/ARE/ run```
  
 # License
 

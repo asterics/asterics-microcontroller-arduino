@@ -34,9 +34,22 @@
         <script src="../startpage/clientExample/javascript/JSmap.js"></script>
         <script src="../startpage/clientExample/javascript/areCommunicator.js"></script>
 
-        <!-- provided by this repository, should be part of the framework later -->
-        <script src="../startpage/lib/demoLib.js"></script>
-        		
+		<!-- provided by this repository, should be part of the framework later -->
+		<script src="../startpage/lib/webAppUtils.js"></script>
+		<script src="../startpage/lib/modelManipulation.js"></script>
+	 	
+	 	<!-- inline code to initialize REST API and automatic model <-> widget synchronization -->
+	 	<script type="text/javascript">
+			//Set the base URI of the running ARE instance.     
+			//You could also make this configurable by the user.
+			setBaseURI("http://localhost:8081/rest/");
+	
+			//Define path of model file on the webserver.
+			var modelFilePathOnWebserver='webapps/asterics-solution-template/models/nameOfModelFile.acs';
+			//Init window.onload function to automatically update all widgets with a model binding with the values of the currently deployed model.
+			window.onload=updateWidgetsFromDeployedModel;		
+		</script>       		
+		
 		<title>AsTeRICS Arduino Microcontroller</title>
 	</head>
  
@@ -147,9 +160,9 @@
                         <ul>
                             <li>USB Port</li>
                             <!-- FIXME: Add AsTeRICS Amazon Links -->
-                            <li><a target="_blank" href="https://www.amazon.de/UGREEN-Druckerkabel-Anschlusskabel-Scannerkabel-Vergoldete/dp/B00P0FO0Y2/ref=sr_1_2?s=industrial&ie=UTF8&qid=1520162926&sr=1-2&keywords=USB-Kabel+A+auf+B"> USB cabel (USB 2.0 - A/B)</a></li>
+                            <li><a target="_blank" href="https://www.amazon.de/gp/product/B001NQOJMK/ref=as_li_tl?ie=UTF8&tag=astericsfound-21&camp=1638&creative=6742&linkCode=as2&creativeASIN=B001NQOJMK&linkId=723e0a0b7ce4f5f7be6171349dae5637"> USB cabel (USB 2.0 - A/B)</a></li>
                             <!-- FIXME: Add AsTeRICS Amazon Links -->
-                            <li><a target="_blank" href="https://www.amazon.de/Arduino-Platine-Rev-Elektronik-Lernpaket/dp/364565139X/ref=sr_1_1?s=books&ie=UTF8&qid=1520162725&sr=1-1&keywords=Arduino+Uno+Rev.+3">Arduino Uno SMD R3</a> with <strong>AsTeRICS CIM</strong> installed</li>
+                            <li><a target="_blank" href="https://www.amazon.de/gp/product/B008GRTSV6/ref=as_li_tl?ie=UTF8&tag=astericsfound-21&camp=1638&creative=6742&linkCode=as2&creativeASIN=B008GRTSV6&linkId=8f970f16f6ce58a9f5549a7f66e03863">Arduino Uno SMD R3</a> with <strong>AsTeRICS CIM</strong> installed</li>
                             <li><a href="https://github.com/asterics/AsTeRICS/releases/tag/v3.0" target="_blank">AsTeRICS 3.0</a> installed and ARE running</li>
                             <li>OS: Windows, Linux (incl. RPi), Mac OS X</li>
                         </ul>
@@ -160,7 +173,7 @@
                             <li><b>Demo 2: Digital Output</b>: LEDs, Resistor</li>
                             <li><b>Demo 3: PWM</b>: LEDs, Resistor</li>
                             <li><b>Demo 4: ADC</b>: Capacitor, Resistor</li>
-                            <li><b>Demo 5: Servo PWM</b>: <a target="_blank" href="https://www.amazon.de/Carson-500502015-CS-3-Servo-3KG/dp/B0037Y93CW/ref=sr_1_7?ie=UTF8&qid=1520713097&sr=8-7&keywords=servomotor">Servo motor</a></li>
+                            <li><b>Demo 5: Servo PWM</b>: <a target="_blank" href="https://www.amazon.de/gp/product/B0037Y93CW/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=astericsfound-21&creative=6742&linkCode=as2&creativeASIN=B0037Y93CW&linkId=3bcb9a185c1ccf4b755192583b3c613c">Servo motor</a></li>
 
                         </ul>
 
@@ -169,7 +182,7 @@
                         <div class="col">
                             <p><b>Windows 7, 8, 10</b></p>
                             <p>Flash Arduino Uno</p>
-                            <pre class="winterm"> C:\git\asterics\AsTeRICS\CIMs\Arduino\build> flash COM1</pre>
+                            <pre class="winterm"> C:\absolute\path\to\AsTeRICS\CIMs\Arduino\build> flash COM1</pre>
                                 <!-- &lt;COMx&gt;</CIM></pre> -->
                         </div><br>
 
@@ -237,6 +250,7 @@
 
                         <h4>Demo Application</h4>
                         <p>Use the <em>left</em> button to start and deploy the model to a (locally) running ARE instance, and start to capture push button (S<sub>1</sub>) activity.
+                                                      
                             <table class="demo-application-table" width="100%">
                                 <tr>
                                     <td align="center" class="demo-application-cell demo-cell-start" width="15%">
@@ -435,7 +449,7 @@
                         <p>
                             Use the <em>left</em> button to start and deploy the model to a (locally) running ARE instance.
                             Afterwards, press the buttons <code>Set Pin 2</code> and <code>Reset Pin 2</code> to turn pin with the number <code>2</code> on and off, respectively.
-                            The AsTeRICS model (.acs) is started and commands are passed through to it, in order to toggle and dim the LED.
+                            The AsTeRICS model (.acs) is started and commands are passed through to it.
                             <table class="demo-application-table demo4" width="100%">
                                 <tr>
                                     <td align="center" class="demo-application-cell demo-cell-start" width="15%">
@@ -500,7 +514,7 @@
                             Use the <em>left</em> button to start and deploy the model to a (locally) running ARE instance.
                             Afterwards, press the buttons <code>Servo On</code> and <code>Servo Off</code> to turn the servo motor on and off, respectively.
                             You may change the value of the slider <em>Angle</em> as you wish.
-                            The AsTeRICS model (.acs) is started and commands are passed through to it, in order to toggle and dim the LED.
+                            The AsTeRICS model (.acs) is started and commands are passed through to it.
                             <table class="demo-application-table" width="100%">
                                 <tr>
                                     <td align="center" class="demo-application-cell demo-cell-start" width="15%">
