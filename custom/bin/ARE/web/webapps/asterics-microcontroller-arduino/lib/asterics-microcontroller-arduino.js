@@ -1,9 +1,9 @@
 var demo1, demo4, demo5;
 var demo1_circuit, demo4_circuit, demo5_circuit;
 var demo2, demo2_led, demo2_circuit, demo2_animation, demo2_circuit_led, demo2_circuit_status=false;
-var demo3, demo2_led, demo3_circuit, demo3_animation, demo3_circuit_led, demo3_circuit_text, demo3_circuit_status=true, demo3_dutycycle=100;
+var demo3, demo2_led, demo3_circuit, demo3_animation, demo3_circuit_led, demo3_circuit_text, demo3_circuit_status=false, demo3_dutycycle=100;
 var demo4_graph, demo4_chart, demo4_graph_data, demo4_graph_data_y, demo4_animation, demo4_idx;
-var demo5, demo5_rotor, demo5_circuit, demo5_circuit_text, demo5_status=true, demo5_degree=0;
+var demo5, demo5_rotor, demo5_circuit, demo5_circuit_text, demo5_status=false, demo5_degree=0;
 
 var animation_default_speed = 1000;
 
@@ -470,8 +470,9 @@ function demo3_application(id) {
         rgb_value = "rgb(100%,100%,100%)";
         rgb_value_ard = "rgb(45%,45%,45%)";
 
-        sendDataToInputPort(defaultSuccessCallback, defaultErrorCallback, 'Arduino.1', 'pwm3', "0");
-        triggerEvent(defaultSuccessCallback, defaultErrorCallback, 'ConstantDispatcher.1', 'dispatchSlot2');
+        // No ErrorCallback if application was not started
+        sendDataToInputPort(defaultSuccessCallback, null, 'Arduino.1', 'pwm3', "0");
+        triggerEvent(defaultSuccessCallback, null, 'ConstantDispatcher.1', 'dispatchSlot2');
     }
     demo3_circuit_text.innerHTML = String(dutycycle) + "%";
     demo3_led.setAttribute("fill",rgb_value_ard);
@@ -491,7 +492,6 @@ function demo4_application(id) {
 
     } else if (id == "demo4buttonoff") {
         triggerEvent(defaultSuccessCallback, defaultErrorCallback, 'Arduino.1', 'clearPin2');
-
     } 
 }
 
@@ -520,7 +520,9 @@ function demo5_application(id) {
         sendDataToInputPort(defaultSuccessCallback, defaultErrorCallback, 'Arduino.1', 'pwm3', String(degree*255/90));
     } else {
         degree = 0; 
-        sendDataToInputPort(defaultSuccessCallback, defaultErrorCallback, 'Arduino.1', 'pwm3', "0");
+
+        // No ErrorCallback if application was not started
+        sendDataToInputPort(defaultSuccessCallback, null, 'Arduino.1', 'pwm3', "0");
     }
     
     $(demo5_rotor).attr({transform: "rotate(-" + degree + " 200 362.36221)"}); 
